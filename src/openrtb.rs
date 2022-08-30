@@ -13,6 +13,7 @@
 use self::bool::Bool;
 use bid_request::{App, Site};
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
+use serde_json::Value;
 use serde_repr::*;
 
 /// OpenRTB 2.0: The top-level bid request object contains a globally unique
@@ -26,7 +27,7 @@ use serde_repr::*;
 /// These objects are highly recommended, but only one applies to a given
 /// bid request depending on whether the media is browser-based web content
 /// or a non-browser application, respectively.
-#[derive(Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct BidRequest {
     /// Unique ID of the bid request, provided by the exchange.
     /// REQUIRED by the OpenRTB specification.
@@ -53,7 +54,8 @@ pub struct BidRequest {
 
     /// Auction type, where 1 = First Price, 2 = Second Price Plus.
     /// Exchange-specific auction types can be defined using values > 500.
-    pub at: AuctionType,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub at: Option<AuctionType>,
 
     /// Maximum time in milliseconds to submit a bid to avoid timeout.
     /// This value is commonly communicated offline.
@@ -131,6 +133,10 @@ pub struct BidRequest {
     /// (non-browser applications). Only applicable and recommended for apps.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub app: Option<App>,
+
+    /// Extensions.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext: Option<Value>,
 }
 
 /// Nested message and enum types in `BidRequest`.
@@ -141,6 +147,7 @@ pub mod bid_request {
         ProductionQuality, QagMediaRating,
     };
     use serde::{Deserialize, Serialize};
+    use serde_json::Value;
 
     /// OpenRTB 2.5: This object describes the nature and behavior of the entity
     /// that is the source of the bid request upstream from the exchange.
@@ -150,7 +157,7 @@ pub mod bid_request {
     /// upstream server entities such as another RTB exchange, a mediation
     /// platform, or an ad server combines direct campaigns with 3rd party
     /// demand in decisioning.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Source {
         /// Entity responsible for the final impression sale decision,
         /// where false = exchange, true = upstream source
@@ -169,6 +176,10 @@ pub mod bid_request {
         /// RECOMMENDED by the OpenRTB specification.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub pchain: Option<String>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
 
     /// OpenRTB 2.0: This object describes an ad placement or impression
@@ -182,7 +193,7 @@ pub mod bid_request {
     /// indicates the type of impression being offered. The publisher can choose
     /// one such type which is the typical case or mix them at their discretion.
     /// Any given bid for the impression must conform to one of the offered types.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Imp {
         /// A unique identifier for this impression within the context of the bid
         /// request (typically, value starts with 1, and increments up to n
@@ -271,6 +282,10 @@ pub mod bid_request {
         /// An array of Metric object (Section 3.2.5).
         #[serde(skip_serializing_if = "Option::is_none")]
         pub metric: Option<Vec<imp::Metric>>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
 
     /// Nested message and enum types in `Imp`.
@@ -278,11 +293,11 @@ pub mod bid_request {
         use super::super::bool::Bool;
         use super::super::{
             AdPosition, ApiFramework, BannerAdType, CompanionType, ContentDeliveryMethod,
-            CreativeAttribute, ExpandableDirection, FeedType, PlaybackCessationMode,
+            CreativeAttribute, ExpandableDirection, FeedType, NativeRequest, PlaybackCessationMode,
             PlaybackMethod, Protocol, VideoLinearity, VideoPlacementType, VolumeNormalizationMode,
         };
-
         use serde::{Deserialize, Serialize};
+        use serde_json::Value;
 
         /// OpenRTB 2.5: This object is associated with an impression as
         /// an array of metrics. These metrics can offer insight into
@@ -290,7 +305,7 @@ pub mod bid_request {
         /// viewability, click-through rate, etc.  Each metric is identified
         /// by its type, reports the value of the metric, and optionally
         /// identifies the source or vendor measuring the value.
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Metric {
             /// Type of metric being presented using exchange curated string
             /// names which should be published to bidders a priori.
@@ -311,6 +326,10 @@ pub mod bid_request {
             /// RECOMMENDED by the OpenRTB specification.
             #[serde(skip_serializing_if = "Option::is_none")]
             pub vendor: Option<String>,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
 
         /// OpenRTB 2.0: This object represents the most general type of
@@ -327,7 +346,7 @@ pub mod bid_request {
         /// as video and/or native by also including as Imp subordinates the Video
         /// and/or Native objects, respectively. However, any given bid for the
         /// impression must conform to one of the offered types.
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Banner {
             /// Width in device independent pixels (DIPS).
             /// If no format objects are specified, this is an exact width
@@ -416,17 +435,22 @@ pub mod bid_request {
             #[deprecated]
             #[serde(skip_serializing_if = "Option::is_none")]
             pub hmin: Option<i32>,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
+
         /// Nested message and enum types in `Banner`.
         pub mod banner {
-
             use serde::{Deserialize, Serialize};
+            use serde_json::Value;
 
             /// OpenRTB 2.4: This object represents an allowed size (i.e.,
             /// height and width combination) for a banner impression.
             /// These are typically used in an array for an impression where
             /// multiple sizes are permitted.
-            #[derive(Clone, PartialEq, Serialize, Deserialize)]
+            #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
             pub struct Format {
                 /// Width in device independent pixels (DIPS).
                 #[serde(skip_serializing_if = "Option::is_none")]
@@ -448,8 +472,13 @@ pub mod bid_request {
                 /// which the ad will be displayed when the size is expressed as a ratio.
                 #[serde(skip_serializing_if = "Option::is_none")]
                 pub wmin: Option<i32>,
+
+                /// Extensions.
+                #[serde(skip_serializing_if = "Option::is_none")]
+                pub ext: Option<Value>,
             }
         }
+
         /// OpenRTB 2.0: This object represents an in-stream video impression.
         /// Many of the fields are non-essential for minimally viable transactions,
         /// but are included to offer fine control when needed. Video in OpenRTB
@@ -464,7 +493,7 @@ pub mod bid_request {
         /// banner and/or native by also including as Imp subordinates the Banner
         /// and/or Native objects, respectively. However, any given bid for the
         /// impression must conform to one of the offered types.
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Video {
             /// Allowlist of content MIME types supported. Popular MIME types include,
             /// but are not limited to "image/jpg", "image/gif" and
@@ -605,7 +634,12 @@ pub mod bid_request {
             #[deprecated]
             #[serde(skip_serializing_if = "Option::is_none")]
             pub protocol: Option<Protocol>,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
+
         /// This object represents an audio type impression. Many of the fields
         /// are non-essential for minimally viable transactions, but are included
         /// to offer fine control when needed. Audio in OpenRTB generally assumes
@@ -619,7 +653,7 @@ pub mod bid_request {
         /// as banner, video, and/or native by also including as Imp subordinates
         /// objects of those types. However, any given bid for the impression must
         /// conform to one of the offered types.
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Audio {
             /// Content MIME types supported (e.g., "audio/mp4").
             /// REQUIRED by the OpenRTB specification: at least 1 element.
@@ -628,7 +662,6 @@ pub mod bid_request {
 
             /// Minimum audio ad duration in seconds.
             /// RECOMMENDED by the OpenRTB specification.
-            // #[p(int32, optional, tag = "2", default = "0")]
             #[serde(skip_serializing_if = "Option::is_none")]
             pub minduration: Option<i32>,
 
@@ -711,7 +744,12 @@ pub mod bid_request {
             /// Volume normalization mode.
             #[serde(skip_serializing_if = "Option::is_none")]
             pub nvol: Option<VolumeNormalizationMode>,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
+
         /// OpenRTB 2.3: This object represents a native type impression.
         /// Native ad units are intended to blend seamlessly into the surrounding
         /// content (e.g., a sponsored Twitter or Facebook post). As such, the
@@ -732,8 +770,20 @@ pub mod bid_request {
         /// as banner and/or video by also including as Imp subordinates the Banner
         /// and/or Video objects, respectively. However, any given bid for the
         /// impression must conform to one of the offered types.
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Native {
+            /// Request payload complying with the Native Ad Specification.
+            /// Exactly one of {request, request_native} should be used;
+            /// this is the OpenRTB-compliant field for JSON serialization.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub request: Option<String>,
+
+            /// Request payload complying with the Native Ad Specification.
+            /// Exactly one of {request, request_native} should be used;
+            /// this is an alternate field preferred for Protobuf serialization.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub request_native: Option<NativeRequest>,
+
             /// Version of the Native Ad Specification to which request complies.
             /// RECOMMENDED by the OpenRTB specification.
             pub ver: Option<String>,
@@ -746,9 +796,10 @@ pub mod bid_request {
             /// Blocked creative attributes.
             #[serde(skip_serializing_if = "Option::is_none")]
             pub battr: Option<Vec<CreativeAttribute>>,
-            // #[p(oneof = "native::RequestOneof", tags = "1, 50")]
-            // #[serde(skip_serializing_if = "Option::is_none")]
-            // pub request_oneof: Option<native::RequestOneof>,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
         // /// Nested message and enum types in `Native`.
         // pub mod native {
@@ -770,7 +821,7 @@ pub mod bid_request {
         /// direct deals between buyers and sellers that may pertain to this
         /// impression. The actual deals are represented as a collection of
         /// Deal objects. Refer to Section 7.2 for more details.
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Pmp {
             /// Indicator of auction eligibility to seats named in the Direct Deals
             /// object, where false = all bids are accepted, true = bids are restricted
@@ -782,25 +833,29 @@ pub mod bid_request {
             /// applicable to this impression.
             #[serde(skip_serializing_if = "Option::is_none")]
             pub deals: Option<Vec<pmp::Deal>>,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
 
         /// Nested message and enum types in `Pmp`.
         pub mod pmp {
             use super::super::super::AuctionType;
             use serde::{Deserialize, Serialize};
+            use serde_json::Value;
 
             /// OpenRTB 2.2: This object constitutes a specific deal that was struck
             /// a priori between a buyer and a seller. Its presence with the Pmp
             /// collection indicates that this impression is available under the terms
             /// of that deal. Refer to Section 7.2 for more details.
-            #[derive(Clone, PartialEq, Serialize, Deserialize)]
+            #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
             pub struct Deal {
                 /// A unique identifier for the direct deal.
                 /// REQUIRED by the OpenRTB specification.
                 pub id: String,
 
                 /// Minimum bid for this impression expressed in CPM.
-                // #[prost(double, optional, tag = "2", default = "0")]
                 #[serde(skip_serializing_if = "Option::is_none")]
                 pub bidfloor: Option<f64>,
 
@@ -829,6 +884,10 @@ pub mod bid_request {
                 /// can be defined by the exchange.
                 #[serde(skip_serializing_if = "Option::is_none")]
                 pub at: Option<AuctionType>,
+
+                /// Extensions.
+                #[serde(skip_serializing_if = "Option::is_none")]
+                pub ext: Option<Value>,
             }
         }
     }
@@ -837,7 +896,7 @@ pub mod bid_request {
     /// is a website as opposed to a non-browser application. A bid request must
     /// not contain both a Site and an App object. At a minimum, it is useful to
     /// provide a site ID or page URL, but this is not strictly required.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Site {
         /// Site ID on the exchange.
         /// RECOMMENDED by the OpenRTB specification.
@@ -902,6 +961,10 @@ pub mod bid_request {
         /// when viewed on mobile devices.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub mobile: Option<Bool>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
 
     /// OpenRTB 2.0: This object should be included if the ad supported content
@@ -909,7 +972,7 @@ pub mod bid_request {
     /// A bid request must not contain both an App and a Site object.
     /// At a minimum, it is useful to provide an App ID or bundle,
     /// but this is not strictly required.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct App {
         /// Application ID on the exchange.
         /// RECOMMENDED by the OpenRTB specification.
@@ -978,12 +1041,16 @@ pub mod bid_request {
         /// App store URL for an installed app; for QAG 1.5 compliance.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub storeurl: Option<String>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
 
     /// OpenRTB 2.0: This object describes the publisher of the media in which
     /// the ad will be displayed. The publisher is typically the seller
     /// in an OpenRTB transaction.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Publisher {
         /// Exchange-specific publisher ID.
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -1001,6 +1068,10 @@ pub mod bid_request {
         /// Highest level domain of the publisher (e.g., "publisher.com").
         #[serde(skip_serializing_if = "Option::is_none")]
         pub domain: Option<String>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
 
     /// OpenRTB 2.0: This object describes the content in which the impression
@@ -1011,7 +1082,7 @@ pub mod bid_request {
     /// content is running, as a result of the syndication method.
     /// For example might be a video impression embedded in an iframe on an
     /// unknown web property or device.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Content {
         /// ID uniquely identifying the content.
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -1123,12 +1194,17 @@ pub mod bid_request {
         #[deprecated]
         #[serde(skip_serializing_if = "Option::is_none")]
         pub videoquality: Option<ProductionQuality>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
+
     /// OpenRTB 2.0: This object defines the producer of the content in which
     /// the ad will be shown. This is particularly useful when the content is
     /// syndicated and may be distributed through different publishers and thus
     /// when the producer and publisher are not necessarily the same entity.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Producer {
         /// Content producer or originator ID. Useful if content is syndicated,
         /// and may be posted on a site using embed tags.
@@ -1147,13 +1223,17 @@ pub mod bid_request {
         /// Highest level domain of the content producer (e.g., "producer.com").
         #[serde(skip_serializing_if = "Option::is_none")]
         pub domain: Option<String>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
 
     /// OpenRTB 2.0: This object provides information pertaining to the device
     /// through which the user is interacting. Device information includes its
     /// hardware, platform, location, and carrier data. The device can refer to a
     /// mobile handset, a desktop computer, set top box, or other digital device.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Device {
         /// Location of the device assumed to be the user's current location defined
         /// by a Geo object (Section 3.2.12).
@@ -1289,7 +1369,12 @@ pub mod bid_request {
         /// MAC address of the device; hashed via MD5.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub macmd5: Option<String>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
+
     /// OpenRTB 2.0: This object encapsulates various methods for specifying a
     /// geographic location. When subordinate to a Device object, it indicates the
     /// location of the device which can also be interpreted as the user's current
@@ -1299,7 +1384,7 @@ pub mod bid_request {
     /// The lat/lon attributes should only be passed if they conform to the
     /// accuracy depicted in the type attribute. For example, the centroid of a
     /// geographic region such as postal code should not be passed.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Geo {
         /// Latitude from -90.0 to +90.0, where negative is south.
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -1364,13 +1449,18 @@ pub mod bid_request {
         /// Local time as the number +/- of minutes from UTC.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub utcoffset: Option<i32>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
+
     /// OpenRTB 2.0: This object contains information known or derived about
     /// the human user of the device (i.e., the audience for advertising).
     /// The user id is an exchange artifact and may be subject to rotation or other
     /// privacy policies. However, this user ID must be stable long enough to serve
     /// reasonably as the basis for frequency capping and retargeting.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct User {
         /// Exchange-specific ID for the user. At least one of id or buyeruid
         /// is recommended.
@@ -1409,7 +1499,12 @@ pub mod bid_request {
         /// different data source.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub data: Option<Vec<Data>>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
+
     /// OpenRTB 2.0: The data and segment objects together allow additional data
     /// about the user to be specified. This data may be from multiple sources
     /// whether from the exchange itself or third party providers as specified by
@@ -1421,7 +1516,7 @@ pub mod bid_request {
     /// For exchange bidding, this is also used to send key
     /// value pairs from the publisher to the buyer.
     /// <https://support.google.com/admanager/answer/177381>
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Data {
         /// Exchange-specific ID for the data provider.
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -1435,19 +1530,23 @@ pub mod bid_request {
         /// data values.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub segment: Option<Vec<data::Segment>>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
 
     /// Nested message and enum types in `Data`.
     pub mod data {
-
         use serde::{Deserialize, Serialize};
+        use serde_json::Value;
 
         /// OpenRTB 2.0: Segment objects are essentially key-value pairs that
         /// convey specific units of data about the user. The parent Data object
         /// is a collection of such values from a given data provider.
         /// The specific segment names and value options must be published by the
         /// exchange a priori to its bidders.
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Segment {
             /// ID of the data segment specific to the data provider.
             #[serde(skip_serializing_if = "Option::is_none")]
@@ -1460,6 +1559,10 @@ pub mod bid_request {
             /// String representation of the data segment value.
             #[serde(skip_serializing_if = "Option::is_none")]
             pub value: Option<String>,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
     }
     /// OpenRTB 2.2: This object contains any legal, governmental, or industry
@@ -1467,12 +1570,16 @@ pub mod bid_request {
     /// or not the request falls under the United States Federal Trade Commission's
     /// regulations for the United States Children's Online Privacy Protection Act
     /// ("COPPA"). Refer to Section 7.1 for more information.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Regs {
         /// Flag indicating if this request is subject to the COPPA regulations
         /// established by the USA FTC.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub coppa: Option<Bool>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
     // #[derive(Serialize, Deserialize)]
     // #[derive(Clone, PartialEq, ::prost::Oneof)]
@@ -1500,7 +1607,7 @@ pub mod bid_request {
 /// with HTTP 204. Alternately if the bidder wishes to convey to the exchange a
 /// reason for not bidding, just a BidResponse object is returned with a
 /// reason code in the nbr attribute.
-#[derive(Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct BidResponse {
     /// ID of the bid request to which this is a response.
     /// REQUIRED by the OpenRTB specification.
@@ -1538,11 +1645,16 @@ pub struct BidResponse {
     /// Reason for not bidding.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub nbr: Option<NoBidReason>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext: Option<Value>,
 }
+
 /// Nested message and enum types in `BidResponse`.
 pub mod bid_response {
     use super::bool::Bool;
     use serde::{Deserialize, Serialize};
+    use serde_json::Value;
 
     /// OpenRTB 2.0: A bid response can contain multiple SeatBid objects, each on
     /// behalf of a different bidder seat and each containing one or more
@@ -1550,7 +1662,7 @@ pub mod bid_response {
     /// group attribute can be used to specify if a seat is willing to accept any
     /// impressions that it can win (default) or if it is only interested in
     /// winning any if it can win them all as a group.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct SeatBid {
         /// Array of 1+ Bid objects (Section 4.2.3) each related to an impression.
         /// Multiple bids can relate to the same impression.
@@ -1568,11 +1680,16 @@ pub mod bid_response {
         /// true = impressions must be won or lost as a group.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub group: Option<Bool>,
+
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
 
     /// Nested message and enum types in `SeatBid`.
     pub mod seat_bid {
-        use super::super::{ApiFramework, CreativeAttribute, Protocol, QagMediaRating};
+        use super::super::{
+            ApiFramework, CreativeAttribute, NativeResponse, Protocol, QagMediaRating,
+        };
         use serde::{Deserialize, Serialize};
         use serde_json::Value;
 
@@ -1580,7 +1697,7 @@ pub mod bid_response {
         /// each of which relates to a specific impression in the bid request
         /// via the impid attribute and constitutes an offer to buy that impression
         /// for a given price.
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Bid {
             /// Bidder generated bid ID to assist with logging/tracking.
             /// REQUIRED by the OpenRTB specification.
@@ -1707,14 +1824,22 @@ pub mod bid_response {
             #[serde(skip_serializing_if = "Option::is_none")]
             pub exp: Option<i32>,
 
+            /// Optional means of conveying ad markup in case the bid wins;
+            /// supersedes the win notice if markup is included in both.
+            /// For native ad bids, exactly one of {adm, adm_native} should be used;
+            /// this is the OpenRTB-compliant field for JSON serialization.
             #[serde(skip_serializing_if = "Option::is_none")]
             pub adm: Option<String>,
 
+            /// Native ad response.
+            /// For native ad bids, exactly one of {adm, adm_native} should be used;
+            /// this is the field used for Protobuf serialization.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub adm_native: Option<NativeResponse>,
+
+            /// Extensions.
             #[serde(skip_serializing_if = "Option::is_none")]
             pub ext: Option<Value>,
-            // #[p(oneof = "bid::AdmOneof", tags = "6, 50")]
-            // #[serde(skip_serializing_if = "Option::is_none")]
-            // pub adm_oneof: Option<bid::AdmOneof>,
         }
         // /// Nested message and enum types in `Bid`.
         // pub mod bid {
@@ -1742,7 +1867,7 @@ pub mod bid_response {
 /// opportunity available for bid via this bid request. It must be included
 /// directly in the impression object if the impression offered for auction
 /// is a native ad format.
-#[derive(Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct NativeRequest {
     /// Version of the Native Markup version in use.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1772,7 +1897,6 @@ pub struct NativeRequest {
     /// auctioning multiple identical placements (in which case
     /// plcmtcnt>1, seq=0) or you are holding separate auctions for distinct
     /// items in the feed (in which case plcmtcnt=1, seq>=1).
-    // #[p(int32, optional, tag = "5", default = "0")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub seq: Option<i32>,
 
@@ -1815,12 +1939,19 @@ pub struct NativeRequest {
     #[deprecated]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub adunit: Option<AdUnitId>,
+
+    /// Extensions.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext: Option<Value>,
 }
+
 /// Nested message and enum types in `NativeRequest`.
 pub mod native_request {
-    use super::super::EventTrackingMethod;
+    use super::super::native_request::asset::{Data, Image, Title};
+    use super::super::{bid_request::imp::Video, EventTrackingMethod, EventType};
     use super::bool::Bool;
     use serde::{Deserialize, Serialize};
+    use serde_json::Value;
 
     /// OpenRTB Native 1.0: The main container object for each asset requested or
     /// supported by Exchange on behalf of the rendering client.
@@ -1828,39 +1959,59 @@ pub mod native_request {
     /// {title,img,video,data} objects should be present in each object.
     /// All others should be null/absent. The id is to be unique within the
     /// Asset array so that the response can be aligned.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Asset {
         /// Unique asset ID, assigned by exchange. Typically a counter for the array.
         /// REQUIRED by the OpenRTB Native specification.
         pub id: i32,
+
         /// Set to true if asset is required
         /// (exchange will not accept a bid without it).
         #[serde(skip_serializing_if = "Option::is_none")]
         pub required: Option<Bool>,
-        // /// RECOMMENDED by the OpenRTB Native specification.
-        // // #[prost(oneof = "asset::AssetOneof", tags = "3, 4, 5, 6")]
-        // #[serde(skip_serializing_if = "Option::is_none")]
-        // pub asset_oneof: Option<asset::AssetOneof>,
+
+        /// Title object for title assets.
+        pub title: Option<Title>,
+
+        /// Image object for image assets.
+        pub img: Option<Image>,
+
+        /// Video object for video assets.
+        /// Note that in-stream video ads are not part of Native.
+        /// Native ads may contain a video as the ad creative itself.
+        pub video: Option<Video>,
+
+        /// Data object for brand name, description, ratings, prices etc.
+        pub data: Option<Data>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
 
     /// Nested message and enum types in `Asset`.
     pub mod asset {
-        use super::super::ImageAssetType;
+        use super::super::{DataAssetType, ImageAssetType};
         use serde::{Deserialize, Serialize};
+        use serde_json::Value;
 
         /// OpenRTB Native 1.0: The Title object is to be used for title element
         /// of the Native ad.
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Title {
             /// Maximum length of the text in the title element.
             /// RECOMMENDED that the value be either of: 25, 90, 140.
             /// REQUIRED by the OpenRTB Native specification.
             pub len: i32,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
         /// OpenRTB Native 1.0: The Image object to be used for all image elements
         /// of the Native ad such as Icons, Main Image, etc.
         /// RECOMMENDED sizes and aspect ratios are included in ImageAssetType.
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Image {
             /// Type ID of the image element supported by the publisher.
             /// The publisher can display this information in an appropriate format.
@@ -1898,7 +2049,12 @@ pub mod native_request {
             /// links to all IETF RFCs. If blank, assume all types are allowed.
             #[serde(skip_serializing_if = "Option::is_none")]
             pub mimes: Option<Vec<String>>,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
+
         /// OpenRTB Native 1.0: The Data Object is to be used for all non-core
         /// elements of the native unit such as Ratings, Review Count, Stars,
         /// Download count, descriptions etc. It is also generic for future of Native
@@ -1908,30 +2064,33 @@ pub mod native_request {
             /// Type ID of the element supported by the publisher. The publisher can
             /// display this information in an appropriate format.
             /// REQUIRED by the OpenRTB Native specification.
-            pub r#type: i32,
+            pub r#type: DataAssetType,
 
             /// Maximum length of the text in the element's response. Longer strings
             /// may be truncated and ellipsized by Ad Exchange or the publisher during
             /// rendering.
             #[serde(skip_serializing_if = "Option::is_none")]
             pub len: Option<i32>,
-        }
 
-        /// RECOMMENDED by the OpenRTB Native specification.
-        #[derive(Clone, PartialEq)]
-        // #[derive(Clone, PartialEq, ::prost::Oneof)]
-        pub enum AssetOneof {
-            /// Title object for title assets.
-            Title(Title),
-            /// Image object for image assets.
-            Img(Image),
-            /// Video object for video assets.
-            /// Note that in-stream video ads are not part of Native.
-            /// Native ads may contain a video as the ad creative itself.
-            Video(super::super::bid_request::imp::Video),
-            /// Data object for brand name, description, ratings, prices etc.
-            Data(Data),
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
+        // /// RECOMMENDED by the OpenRTB Native specification.
+        // #[derive(Clone, PartialEq)]
+        // // #[derive(Clone, PartialEq, ::prost::Oneof)]
+        // pub enum AssetOneof {
+        //     /// Title object for title assets.
+        //     Title(Title),
+        //     /// Image object for image assets.
+        //     Img(Image),
+        //     /// Video object for video assets.
+        //     /// Note that in-stream video ads are not part of Native.
+        //     /// Native ads may contain a video as the ad creative itself.
+        //     Video(super::super::bid_request::imp::Video),
+        //     /// Data object for brand name, description, ratings, prices etc.
+        //     Data(Data),
+        // }
     }
 
     /// OpenRTB Native 1.2: The EventTrackers object specifies the type of events
@@ -1942,17 +2101,16 @@ pub mod native_request {
     pub struct EventTrackers {
         /// Type of event available for tracking.
         /// REQUIRED by the OpenRTB Native specification.
-        pub event: i32,
+        pub event: EventType,
 
         /// Array of types of tracking available for the given event.
         /// REQUIRED by the OpenRTB Native specification.
-        #[serde(skip_serializing_if = "Option::is_none")]
-        pub methods: Option<Vec<EventTrackingMethod>>,
+        pub methods: Vec<EventTrackingMethod>,
     }
 }
 /// OpenRTB Native 1.0: The native response object is the top level JSON object
 /// which identifies an native response.
-#[derive(Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct NativeResponse {
     /// Version of the Native Markup version in use.
     /// RECOMMENDED by the OpenRTB Native specification.
@@ -2013,19 +2171,26 @@ pub struct NativeResponse {
     /// about the buyer's targeting activity.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub privacy: Option<String>,
+
+    /// Extensions.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext: Option<Value>,
 }
+
 /// Nested message and enum types in `NativeResponse`.
 pub mod native_response {
+    use super::super::native_response::asset::{Data, Image, Title, Video};
     use super::super::{EventTrackingMethod, EventType};
     use super::bool::Bool;
     use serde::{Deserialize, Serialize};
+    use serde_json::Value;
 
     /// OpenRTB Native 1.0: Used for "call to action" assets, or other links from
     /// the Native ad. This Object should be associated to its peer object in the
     /// parent Asset Object or as the primary link in the top level NativeResponse
     /// object. When that peer object is activated (clicked) the action should take
     /// the user to the location of the link.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Link {
         /// Landing URL of the clickable link.
         /// REQUIRED by the OpenRTB Native specification.
@@ -2038,6 +2203,10 @@ pub mod native_response {
         /// supported by the device.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub fallback: Option<String>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
     /// OpenRTB Native 1.0: Corresponds to the Asset Object in the request.
     /// The main container object for each asset requested or supported by Exchange
@@ -2045,12 +2214,13 @@ pub mod native_response {
     /// flagged as such. Only one of the {title,img,video,data} objects should be
     /// present in each object. All others should be null/absent. The id is to be
     /// unique within the Asset array so that the response can be aligned.
-    #[derive(Clone, PartialEq, Serialize, Deserialize)]
+    #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
     pub struct Asset {
         /// Unique asset ID, assigned by exchange, must match one of the asset IDs
         /// in request.
         /// REQUIRED in 1.0, or in 1.2 if embedded asset is being used.
         pub id: i32,
+
         /// Set to true if asset is required. (bidder requires it to be displayed).
         #[serde(skip_serializing_if = "Option::is_none")]
         pub required: Option<Bool>,
@@ -2061,15 +2231,35 @@ pub mod native_response {
         /// bid response apply.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub link: Option<Link>,
-        // /// RECOMMENDED by the OpenRTB Native specification.
-        // // #[prost(oneof = "asset::AssetOneof", tags = "3, 4, 5, 6")]
-        // #[serde(skip_serializing_if = "Option::is_none")]
-        // pub asset_oneof: Option<asset::AssetOneof>,
+
+        /// Title object for title assets.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub title: Option<Title>,
+
+        /// Image object for image assets.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub img: Option<Image>,
+
+        /// Video object for video assets.
+        /// Note that in-stream video ads are not part of Native.
+        /// Native ads may contain a video as the ad creative itself.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub video: Option<Video>,
+
+        /// Data object for ratings, prices etc.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub data: Option<Data>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
+
     /// Nested message and enum types in `Asset`.
     pub mod asset {
         use super::super::{DataAssetType, ImageAssetType};
         use serde::{Deserialize, Serialize};
+        use serde_json::Value;
 
         /// OpenRTB Native 1.0: Corresponds to the Title Object in the request,
         /// with the value filled in.
@@ -2077,23 +2267,29 @@ pub mod native_response {
         /// response, it is recommended that three title objects be provided, the
         /// length of each is less than or equal to the three recommended maximum
         /// title lengths (25,90,140).
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Title {
             /// The text associated with the text element.
             /// REQUIRED by the OpenRTB Native specification.
             pub text: String,
+
             /// The length of the title being provided.
             /// REQUIRED if using assetsurl/dcourl representation.
             #[serde(skip_serializing_if = "Option::is_none")]
             pub len: Option<i32>,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
+
         /// OpenRTB Native 1.0: Corresponds to the Image Object in the request.
         /// The Image object to be used for all image elements of the Native ad
         /// such as Icons, Main Image, etc.
         /// It is recommended that if assetsurl/dcourl is being used rather than
         /// embbedded assets, that an image of each recommended aspect ratio
         /// (per ImageType enum) be provided for image type 3 (MAIN_IMAGE).
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Image {
             /// The type of image element being submitted from the ImageType enum.
             /// REQUIRED for assetsurl or dcourl responses,
@@ -2118,13 +2314,18 @@ pub mod native_response {
             /// of the same type submitted.
             #[serde(skip_serializing_if = "Option::is_none")]
             pub h: Option<i32>,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
+
         /// OpenRTB Native 1.0: Corresponds to the Data Object in the request, with
         /// the value filled in. The Data Object is to be used for all miscellaneous
         /// elements of the native unit such as Brand Name, Ratings, Review Count,
         /// Stars, Downloads, etc. It is also generic for future of native elements
         /// not contemplated at the time of the writing of this document.
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Data {
             /// The type of data element being submitted from the DataAssetTypes enum.
             /// REQUIRED in 1.2 for assetsurl or dcourl responses.
@@ -2147,31 +2348,41 @@ pub mod native_response {
             /// value such as "5 stars" or "$10" or "3.4 stars out of 5".
             /// REQUIRED by the OpenRTB Native specification.
             pub value: String,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
+
         /// OpenRTB Native 1.0: Corresponds to the Video Object in the request,
         /// yet containing a value of a conforming VAST tag as a value.
-        #[derive(Clone, PartialEq, Serialize, Deserialize)]
+        #[derive(Clone, Default, PartialEq, Serialize, Deserialize)]
         pub struct Video {
             /// VAST xml.
             /// REQUIRED by the OpenRTB Native specification.
             pub vasttag: String,
+
+            /// Extensions.
+            #[serde(skip_serializing_if = "Option::is_none")]
+            pub ext: Option<Value>,
         }
-        /// RECOMMENDED by the OpenRTB Native specification.
-        // #[derive(Clone, PartialEq, ::prost::Oneof)]
-        #[derive(Clone, PartialEq)]
-        pub enum AssetOneof {
-            /// Title object for title assets.
-            Title(Title),
-            /// Image object for image assets.
-            Img(Image),
-            /// Video object for video assets.
-            /// Note that in-stream video ads are not part of Native.
-            /// Native ads may contain a video as the ad creative itself.
-            Video(Video),
-            /// Data object for ratings, prices etc.
-            Data(Data),
-        }
+        // /// RECOMMENDED by the OpenRTB Native specification.
+        // // #[derive(Clone, PartialEq, ::prost::Oneof)]
+        // #[derive(Clone, PartialEq)]
+        // pub enum AssetOneof {
+        //     /// Title object for title assets.
+        //     Title(Title),
+        //     /// Image object for image assets.
+        //     Img(Image),
+        //     /// Video object for video assets.
+        //     /// Note that in-stream video ads are not part of Native.
+        //     /// Native ads may contain a video as the ad creative itself.
+        //     Video(Video),
+        //     /// Data object for ratings, prices etc.
+        //     Data(Data),
+        // }
     }
+
     /// OpenRTB Native 1.2: The event trackers response is an array of objects and
     /// specifies the types of events the bidder wishes to track and the
     /// URLs/information to track them. Bidder must only respond with methods
@@ -2194,6 +2405,10 @@ pub mod native_response {
         /// REQUIRED for image or js, optional for custom.
         #[serde(skip_serializing_if = "Option::is_none")]
         pub url: Option<String>,
+
+        /// Extensions.
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub ext: Option<Value>,
     }
 }
 
@@ -3402,9 +3617,10 @@ impl ContentCategory {
     }
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum AuctionType {
     FirstPrice,
+    #[default]
     SecondPrice,
     FixedPrice(u32),
 }
@@ -3769,12 +3985,23 @@ impl StartDelay {
 /// OpenRTB 2.5: The following table lists the various types of video placements
 /// derived largely from the IAB Digital Video Guidelines.
 #[derive(
-    Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize_repr, Deserialize_repr,
+    Clone,
+    Copy,
+    Debug,
+    Default,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    Serialize_repr,
+    Deserialize_repr,
 )]
 #[repr(i32)]
 pub enum VideoPlacementType {
     /// The video placement is not defined.
     /// Default value.
+    #[default]
     UndefinedVideoPlacement = 0,
     /// Played before, during or after the streaming video content
     /// that the consumer has requested.
