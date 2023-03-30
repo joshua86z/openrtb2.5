@@ -2421,6 +2421,7 @@ pub mod native_response {
 /// This OpenRTB table has values derived from the IAB Quality Assurance
 /// Guidelines (QAG). Practitioners should keep in sync with updates to the
 /// QAG values as published on IAB.net.
+
 #[derive(
     Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize_repr, Deserialize_repr,
 )]
@@ -2431,787 +2432,787 @@ pub enum ContentCategory {
     /// Arts & Entertainment
     Iab1 = 1,
     /// Books & Literature
-    Iab11 = 2,
+    Iab1_1 = 2,
     /// Celebrity Fan/Gossip
-    Iab12 = 3,
+    Iab1_2 = 3,
     /// Fine Art
-    Iab13 = 4,
+    Iab1_3 = 4,
     /// Humor
-    Iab14 = 5,
+    Iab1_4 = 5,
     /// Movies
-    Iab15 = 6,
+    Iab1_5 = 6,
     /// Music
-    Iab16 = 7,
+    Iab1_6 = 7,
     /// Television
-    Iab17 = 8,
+    Iab1_7 = 8,
     /// Automotive
     Iab2 = 9,
     /// Auto Parts
-    Iab21 = 10,
+    Iab2_1 = 10,
     /// Auto Repair
-    Iab22 = 11,
+    Iab2_2 = 11,
     /// Buying/Selling Cars
-    Iab23 = 12,
+    Iab2_3 = 12,
     /// Car Culture
-    Iab24 = 13,
+    Iab2_4 = 13,
     /// Certified Pre-Owned
-    Iab25 = 14,
+    Iab2_5 = 14,
     /// Convertible
-    Iab26 = 15,
+    Iab2_6 = 15,
     /// Coupe
-    Iab27 = 16,
+    Iab2_7 = 16,
     /// Crossover
-    Iab28 = 17,
+    Iab2_8 = 17,
     /// Diesel
-    Iab29 = 18,
+    Iab2_9 = 18,
     /// Electric Vehicle
-    Iab210 = 19,
+    Iab2_10 = 19,
     /// Hatchback
-    Iab211 = 20,
+    Iab2_11 = 20,
     /// Hybrid
-    Iab212 = 21,
+    Iab2_12 = 21,
     /// Luxury
-    Iab213 = 22,
+    Iab2_13 = 22,
     /// MiniVan
-    Iab214 = 23,
+    Iab2_14 = 23,
     /// Motorcycles
-    Iab215 = 24,
+    Iab2_15 = 24,
     /// Off-Road Vehicles
-    Iab216 = 25,
+    Iab2_16 = 25,
     /// Performance Vehicles
-    Iab217 = 26,
+    Iab2_17 = 26,
     /// Pickup
-    Iab218 = 27,
+    Iab2_18 = 27,
     /// Road-Side Assistance
-    Iab219 = 28,
+    Iab2_19 = 28,
     /// Sedan
-    Iab220 = 29,
+    Iab2_20 = 29,
     /// Trucks & Accessories
-    Iab221 = 30,
+    Iab2_21 = 30,
     /// Vintage Cars
-    Iab222 = 31,
+    Iab2_22 = 31,
     /// Wagon
-    Iab223 = 32,
+    Iab2_23 = 32,
     /// Business
     Iab3 = 33,
     /// Advertising
-    Iab31 = 34,
+    Iab3_1 = 34,
     /// Agriculture
-    Iab32 = 35,
+    Iab3_2 = 35,
     /// Biotech/Biomedical
-    Iab33 = 36,
+    Iab3_3 = 36,
     /// Business Software
-    Iab34 = 37,
+    Iab3_4 = 37,
     /// Construction
-    Iab35 = 38,
+    Iab3_5 = 38,
     /// Forestry
-    Iab36 = 39,
+    Iab3_6 = 39,
     /// Government
-    Iab37 = 40,
+    Iab3_7 = 40,
     /// Green Solutions
-    Iab38 = 41,
+    Iab3_8 = 41,
     /// Human Resources
-    Iab39 = 42,
+    Iab3_9 = 42,
     /// Logistics
-    Iab310 = 43,
+    Iab3_10 = 43,
     /// Marketing
-    Iab311 = 44,
+    Iab3_11 = 44,
     /// Metals
-    Iab312 = 45,
+    Iab3_12 = 45,
     /// Careers
     Iab4 = 46,
     /// Career Planning
-    Iab41 = 47,
+    Iab4_1 = 47,
     /// College
-    Iab42 = 48,
+    Iab4_2 = 48,
     /// Financial  Aid
-    Iab43 = 49,
+    Iab4_3 = 49,
     /// Job Fairs
-    Iab44 = 50,
+    Iab4_4 = 50,
     /// Job Search
-    Iab45 = 51,
+    Iab4_5 = 51,
     /// Resume Writing/Advice
-    Iab46 = 52,
+    Iab4_6 = 52,
     /// Nursing
-    Iab47 = 53,
+    Iab4_7 = 53,
     /// Scholarships
-    Iab48 = 54,
+    Iab4_8 = 54,
     /// Telecommuting
-    Iab49 = 55,
+    Iab4_9 = 55,
     /// U.S. Military
-    Iab410 = 56,
+    Iab4_10 = 56,
     /// Career Advice
-    Iab411 = 57,
+    Iab4_11 = 57,
     /// Education
     Iab5 = 58,
     /// 7-12 Education
-    Iab51 = 59,
+    Iab5_1 = 59,
     /// Adult Education
-    Iab52 = 60,
+    Iab5_2 = 60,
     /// Art History
-    Iab53 = 61,
+    Iab5_3 = 61,
     /// College Administration
-    Iab54 = 62,
+    Iab5_4 = 62,
     /// College Life
-    Iab55 = 63,
+    Iab5_5 = 63,
     /// Distance Learning
-    Iab56 = 64,
+    Iab5_6 = 64,
     /// English as a 2nd Language
-    Iab57 = 65,
+    Iab5_7 = 65,
     /// Language Learning
-    Iab58 = 66,
+    Iab5_8 = 66,
     /// Graduate School
-    Iab59 = 67,
+    Iab5_9 = 67,
     /// Homeschooling
-    Iab510 = 68,
+    Iab5_10 = 68,
     /// Homework/Study Tips
-    Iab511 = 69,
+    Iab5_11 = 69,
     /// K-6 Educators
-    Iab512 = 70,
+    Iab5_12 = 70,
     /// Private School
-    Iab513 = 71,
+    Iab5_13 = 71,
     /// Special Education
-    Iab514 = 72,
+    Iab5_14 = 72,
     /// Studying Business
-    Iab515 = 73,
+    Iab5_15 = 73,
     /// Family & Parenting
     Iab6 = 74,
     /// Adoption
-    Iab61 = 75,
+    Iab6_1 = 75,
     /// Babies & Toddlers
-    Iab62 = 76,
+    Iab6_2 = 76,
     /// Daycare/Pre School
-    Iab63 = 77,
+    Iab6_3 = 77,
     /// Family Internet
-    Iab64 = 78,
+    Iab6_4 = 78,
     /// Parenting - K-6 Kids
-    Iab65 = 79,
+    Iab6_5 = 79,
     /// Parenting teens
-    Iab66 = 80,
+    Iab6_6 = 80,
     /// Pregnancy
-    Iab67 = 81,
+    Iab6_7 = 81,
     /// Special Needs Kids
-    Iab68 = 82,
+    Iab6_8 = 82,
     /// Eldercare
-    Iab69 = 83,
+    Iab6_9 = 83,
     /// Health & Fitness
     Iab7 = 84,
     /// Exercise
-    Iab71 = 85,
+    Iab7_1 = 85,
     /// A.D.D.
-    Iab72 = 86,
+    Iab7_2 = 86,
     /// AIDS/HIV
-    Iab73 = 87,
+    Iab7_3 = 87,
     /// Allergies
-    Iab74 = 88,
+    Iab7_4 = 88,
     /// Alternative Medicine
-    Iab75 = 89,
+    Iab7_5 = 89,
     /// Arthritis
-    Iab76 = 90,
+    Iab7_6 = 90,
     /// Asthma
-    Iab77 = 91,
+    Iab7_7 = 91,
     /// Autism/PDD
-    Iab78 = 92,
+    Iab7_8 = 92,
     /// Bipolar Disorder
-    Iab79 = 93,
+    Iab7_9 = 93,
     /// Brain Tumor
-    Iab710 = 94,
+    Iab7_10 = 94,
     /// Cancer
-    Iab711 = 95,
+    Iab7_11 = 95,
     /// Cholesterol
-    Iab712 = 96,
+    Iab7_12 = 96,
     /// Chronic Fatigue Syndrome
-    Iab713 = 97,
+    Iab7_13 = 97,
     /// Chronic Pain
-    Iab714 = 98,
+    Iab7_14 = 98,
     /// Cold & Flu
-    Iab715 = 99,
+    Iab7_15 = 99,
     /// Deafness
-    Iab716 = 100,
+    Iab7_16 = 100,
     /// Dental Care
-    Iab717 = 101,
+    Iab7_17 = 101,
     /// Depression
-    Iab718 = 102,
+    Iab7_18 = 102,
     /// Dermatology
-    Iab719 = 103,
+    Iab7_19 = 103,
     /// Diabetes
-    Iab720 = 104,
+    Iab7_20 = 104,
     /// Epilepsy
-    Iab721 = 105,
+    Iab7_21 = 105,
     /// GERD/Acid Reflux
-    Iab722 = 106,
+    Iab7_22 = 106,
     /// Headaches/Migraines
-    Iab723 = 107,
+    Iab7_23 = 107,
     /// Heart Disease
-    Iab724 = 108,
+    Iab7_24 = 108,
     /// Herbs for Health
-    Iab725 = 109,
+    Iab7_25 = 109,
     /// Holistic Healing
-    Iab726 = 110,
+    Iab7_26 = 110,
     /// IBS/Crohn's Disease
-    Iab727 = 111,
+    Iab7_27 = 111,
     /// Incest/Abuse Support
-    Iab728 = 112,
+    Iab7_28 = 112,
     /// Incontinence
-    Iab729 = 113,
+    Iab7_29 = 113,
     /// Infertility
-    Iab730 = 114,
+    Iab7_30 = 114,
     /// Men's Health
-    Iab731 = 115,
+    Iab7_31 = 115,
     /// Nutrition
-    Iab732 = 116,
+    Iab7_32 = 116,
     /// Orthopedics
-    Iab733 = 117,
+    Iab7_33 = 117,
     /// Panic/Anxiety Disorders
-    Iab734 = 118,
+    Iab7_34 = 118,
     /// Pediatrics
-    Iab735 = 119,
+    Iab7_35 = 119,
     /// Physical Therapy
-    Iab736 = 120,
+    Iab7_36 = 120,
     /// Psychology/Psychiatry
-    Iab737 = 121,
+    Iab7_37 = 121,
     /// Senor Health
-    Iab738 = 122,
+    Iab7_38 = 122,
     /// Sexuality
-    Iab739 = 123,
+    Iab7_39 = 123,
     /// Sleep Disorders
-    Iab740 = 124,
+    Iab7_40 = 124,
     /// Smoking Cessation
-    Iab741 = 125,
+    Iab7_41 = 125,
     /// Substance Abuse
-    Iab742 = 126,
+    Iab7_42 = 126,
     /// Thyroid Disease
-    Iab743 = 127,
+    Iab7_43 = 127,
     /// Weight Loss
-    Iab744 = 128,
+    Iab7_44 = 128,
     /// Women's Health
-    Iab745 = 129,
+    Iab7_45 = 129,
     /// Food & Drink
     Iab8 = 130,
     /// American Cuisine
-    Iab81 = 131,
+    Iab8_1 = 131,
     /// Barbecues & Grilling
-    Iab82 = 132,
+    Iab8_2 = 132,
     /// Cajun/Creole
-    Iab83 = 133,
+    Iab8_3 = 133,
     /// Chinese Cuisine
-    Iab84 = 134,
+    Iab8_4 = 134,
     /// Cocktails/Beer
-    Iab85 = 135,
+    Iab8_5 = 135,
     /// Coffee/Tea
-    Iab86 = 136,
+    Iab8_6 = 136,
     /// Cuisine-Specific
-    Iab87 = 137,
+    Iab8_7 = 137,
     /// Desserts & Baking
-    Iab88 = 138,
+    Iab8_8 = 138,
     /// Dining Out
-    Iab89 = 139,
+    Iab8_9 = 139,
     /// Food Allergies
-    Iab810 = 140,
+    Iab8_10 = 140,
     /// French Cuisine
-    Iab811 = 141,
+    Iab8_11 = 141,
     /// Health/Lowfat Cooking
-    Iab812 = 142,
+    Iab8_12 = 142,
     /// Italian Cuisine
-    Iab813 = 143,
+    Iab8_13 = 143,
     /// Japanese Cuisine
-    Iab814 = 144,
+    Iab8_14 = 144,
     /// Mexican Cuisine
-    Iab815 = 145,
+    Iab8_15 = 145,
     /// Vegan
-    Iab816 = 146,
+    Iab8_16 = 146,
     /// Vegetarian
-    Iab817 = 147,
+    Iab8_17 = 147,
     /// Wine
-    Iab818 = 148,
+    Iab8_18 = 148,
     /// Hobbies & Interests
     Iab9 = 149,
     /// Art/Technology
-    Iab91 = 150,
+    Iab9_1 = 150,
     /// Arts & Crafts
-    Iab92 = 151,
+    Iab9_2 = 151,
     /// Beadwork
-    Iab93 = 152,
+    Iab9_3 = 152,
     /// Birdwatching
-    Iab94 = 153,
+    Iab9_4 = 153,
     /// Board Games/Puzzles
-    Iab95 = 154,
+    Iab9_5 = 154,
     /// Candle & Soap Making
-    Iab96 = 155,
+    Iab9_6 = 155,
     /// Card Games
-    Iab97 = 156,
+    Iab9_7 = 156,
     /// Chess
-    Iab98 = 157,
+    Iab9_8 = 157,
     /// Cigars
-    Iab99 = 158,
+    Iab9_9 = 158,
     /// Collecting
-    Iab910 = 159,
+    Iab9_10 = 159,
     /// Comic Books
-    Iab911 = 160,
+    Iab9_11 = 160,
     /// Drawing/Sketching
-    Iab912 = 161,
+    Iab9_12 = 161,
     /// Freelance Writing
-    Iab913 = 162,
+    Iab9_13 = 162,
     /// Geneaology
-    Iab914 = 163,
+    Iab9_14 = 163,
     /// Getting Published
-    Iab915 = 164,
+    Iab9_15 = 164,
     /// Guitar
-    Iab916 = 165,
+    Iab9_16 = 165,
     /// Home Recording
-    Iab917 = 166,
+    Iab9_17 = 166,
     /// Investors & Patents
-    Iab918 = 167,
+    Iab9_18 = 167,
     /// Jewelry Making
-    Iab919 = 168,
+    Iab9_19 = 168,
     /// Magic & Illusion
-    Iab920 = 169,
+    Iab9_20 = 169,
     /// Needlework
-    Iab921 = 170,
+    Iab9_21 = 170,
     /// Painting
-    Iab922 = 171,
+    Iab9_22 = 171,
     /// Photography
-    Iab923 = 172,
+    Iab9_23 = 172,
     /// Radio
-    Iab924 = 173,
+    Iab9_24 = 173,
     /// Roleplaying Games
-    Iab925 = 174,
+    Iab9_25 = 174,
     /// Sci-Fi & Fantasy
-    Iab926 = 175,
+    Iab9_26 = 175,
     /// Scrapbooking
-    Iab927 = 176,
+    Iab9_27 = 176,
     /// Screenwriting
-    Iab928 = 177,
+    Iab9_28 = 177,
     /// Stamps & Coins
-    Iab929 = 178,
+    Iab9_29 = 178,
     /// Video & Computer Games
-    Iab930 = 179,
+    Iab9_30 = 179,
     /// Woodworking
-    Iab931 = 180,
+    Iab9_31 = 180,
     /// Home & Garden
     Iab10 = 181,
     /// Appliances
-    Iab101 = 182,
+    Iab10_1 = 182,
     /// Entertaining
-    Iab102 = 183,
+    Iab10_2 = 183,
     /// Environmental Safety
-    Iab103 = 184,
+    Iab10_3 = 184,
     /// Gardening
-    Iab104 = 185,
+    Iab10_4 = 185,
     /// Home Repair
-    Iab105 = 186,
+    Iab10_5 = 186,
     /// Home Theater
-    Iab106 = 187,
+    Iab10_6 = 187,
     /// Interior  Decorating
-    Iab107 = 188,
+    Iab10_7 = 188,
     /// Landscaping
-    Iab108 = 189,
+    Iab10_8 = 189,
     /// Remodeling & Construction
-    Iab109 = 190,
+    Iab10_9 = 190,
     /// Law, Gov't & Politics
-    Iab11x = 191,
+    Iab11 = 191,
     /// Immigration
-    Iab111 = 192,
+    Iab11_1 = 192,
     /// Legal Issues
-    Iab112 = 193,
+    Iab11_2 = 193,
     /// U.S. Government Resources
-    Iab113 = 194,
+    Iab11_3 = 194,
     /// Politics
-    Iab114 = 195,
+    Iab11_4 = 195,
     /// Commentary
-    Iab115 = 196,
+    Iab11_5 = 196,
     /// News
-    Iab12x = 197,
+    Iab12 = 197,
     /// International News
-    Iab121 = 198,
+    Iab12_1 = 198,
     /// National News
-    Iab122 = 199,
+    Iab12_2 = 199,
     /// Local News
-    Iab123 = 200,
+    Iab12_3 = 200,
     /// Personal Finance
-    Iab13x = 201,
+    Iab13 = 201,
     /// Beginning Investing
-    Iab131 = 202,
+    Iab13_1 = 202,
     /// Credit/Debt & Loans
-    Iab132 = 203,
+    Iab13_2 = 203,
     /// Financial News
-    Iab133 = 204,
+    Iab13_3 = 204,
     /// Financial Planning
-    Iab134 = 205,
+    Iab13_4 = 205,
     /// Hedge Fund
-    Iab135 = 206,
+    Iab13_5 = 206,
     /// Insurance
-    Iab136 = 207,
+    Iab13_6 = 207,
     /// Investing
-    Iab137 = 208,
+    Iab13_7 = 208,
     /// Mutual Funds
-    Iab138 = 209,
+    Iab13_8 = 209,
     /// Options
-    Iab139 = 210,
+    Iab13_9 = 210,
     /// Retirement Planning
-    Iab1310 = 211,
+    Iab13_10 = 211,
     /// Stocks
-    Iab1311 = 212,
+    Iab13_11 = 212,
     /// Tax Planning
-    Iab1312 = 213,
+    Iab13_12 = 213,
     /// Society
-    Iab14x = 214,
+    Iab14 = 214,
     /// Dating
-    Iab141 = 215,
+    Iab14_1 = 215,
     /// Divorce Support
-    Iab142 = 216,
+    Iab14_2 = 216,
     /// Gay Life
-    Iab143 = 217,
+    Iab14_3 = 217,
     /// Marriage
-    Iab144 = 218,
+    Iab14_4 = 218,
     /// Senior Living
-    Iab145 = 219,
+    Iab14_5 = 219,
     /// Teens
-    Iab146 = 220,
+    Iab14_6 = 220,
     /// Weddings
-    Iab147 = 221,
+    Iab14_7 = 221,
     /// Ethnic Specific
-    Iab148 = 222,
+    Iab14_8 = 222,
     /// Science
-    Iab15x = 223,
+    Iab15 = 223,
     /// Astrology
-    Iab151 = 224,
+    Iab15_1 = 224,
     /// Biology
-    Iab152 = 225,
+    Iab15_2 = 225,
     /// Chemistry
-    Iab153 = 226,
+    Iab15_3 = 226,
     /// Geology
-    Iab154 = 227,
+    Iab15_4 = 227,
     /// Paranormal Phenomena
-    Iab155 = 228,
+    Iab15_5 = 228,
     /// Physics
-    Iab156 = 229,
+    Iab15_6 = 229,
     /// Space/Astronomy
-    Iab157 = 230,
+    Iab15_7 = 230,
     /// Geography
-    Iab158 = 231,
+    Iab15_8 = 231,
     /// Botany
-    Iab159 = 232,
+    Iab15_9 = 232,
     /// Weather
-    Iab1510 = 233,
+    Iab15_10 = 233,
     /// Pets
-    Iab16x = 234,
+    Iab16 = 234,
     /// Aquariums
-    Iab161 = 235,
+    Iab16_1 = 235,
     /// Birds
-    Iab162 = 236,
+    Iab16_2 = 236,
     /// Cats
-    Iab163 = 237,
+    Iab16_3 = 237,
     /// Dogs
-    Iab164 = 238,
+    Iab16_4 = 238,
     /// Large Animals
-    Iab165 = 239,
+    Iab16_5 = 239,
     /// Reptiles
-    Iab166 = 240,
+    Iab16_6 = 240,
     /// Veterinary Medicine
-    Iab167 = 241,
+    Iab16_7 = 241,
     /// Sports
-    Iab17x = 242,
+    Iab17 = 242,
     /// Auto Racing
-    Iab171 = 243,
+    Iab17_1 = 243,
     /// Baseball
-    Iab172 = 244,
+    Iab17_2 = 244,
     /// Bicycling
-    Iab173 = 245,
+    Iab17_3 = 245,
     /// Bodybuilding
-    Iab174 = 246,
+    Iab17_4 = 246,
     /// Boxing
-    Iab175 = 247,
+    Iab17_5 = 247,
     /// Canoeing/Kayaking
-    Iab176 = 248,
+    Iab17_6 = 248,
     /// Cheerleading
-    Iab177 = 249,
+    Iab17_7 = 249,
     /// Climbing
-    Iab178 = 250,
+    Iab17_8 = 250,
     /// Cricket
-    Iab179 = 251,
+    Iab17_9 = 251,
     /// Figure Skating
-    Iab1710 = 252,
+    Iab17_10 = 252,
     /// Fly Fishing
-    Iab1711 = 253,
+    Iab17_11 = 253,
     /// Football
-    Iab1712 = 254,
+    Iab17_12 = 254,
     /// Freshwater Fishing
-    Iab1713 = 255,
+    Iab17_13 = 255,
     /// Game & Fish
-    Iab1714 = 256,
+    Iab17_14 = 256,
     /// Golf
-    Iab1715 = 257,
+    Iab17_15 = 257,
     /// Horse Racing
-    Iab1716 = 258,
+    Iab17_16 = 258,
     /// Horses
-    Iab1717 = 259,
+    Iab17_17 = 259,
     /// Hunting/Shooting
-    Iab1718 = 260,
+    Iab17_18 = 260,
     /// Inline  Skating
-    Iab1719 = 261,
+    Iab17_19 = 261,
     /// Martial Arts
-    Iab1720 = 262,
+    Iab17_20 = 262,
     /// Mountain Biking
-    Iab1721 = 263,
+    Iab17_21 = 263,
     /// NASCAR Racing
-    Iab1722 = 264,
+    Iab17_22 = 264,
     /// Olympics
-    Iab1723 = 265,
+    Iab17_23 = 265,
     /// Paintball
-    Iab1724 = 266,
+    Iab17_24 = 266,
     /// Power & Motorcycles
-    Iab1725 = 267,
+    Iab17_25 = 267,
     /// Pro Basketball
-    Iab1726 = 268,
+    Iab17_26 = 268,
     /// Pro Ice Hockey
-    Iab1727 = 269,
+    Iab17_27 = 269,
     /// Rodeo
-    Iab1728 = 270,
+    Iab17_28 = 270,
     /// Rugby
-    Iab1729 = 271,
+    Iab17_29 = 271,
     /// Running/Jogging
-    Iab1730 = 272,
+    Iab17_30 = 272,
     /// Sailing
-    Iab1731 = 273,
+    Iab17_31 = 273,
     /// Saltwater Fishing
-    Iab1732 = 274,
+    Iab17_32 = 274,
     /// Scuba Diving
-    Iab1733 = 275,
+    Iab17_33 = 275,
     /// Skateboarding
-    Iab1734 = 276,
+    Iab17_34 = 276,
     /// Skiing
-    Iab1735 = 277,
+    Iab17_35 = 277,
     /// Snowboarding
-    Iab1736 = 278,
+    Iab17_36 = 278,
     /// Surfing/Bodyboarding
-    Iab1737 = 279,
+    Iab17_37 = 279,
     /// Swimming
-    Iab1738 = 280,
+    Iab17_38 = 280,
     /// Table Tennis/Ping-Pong
-    Iab1739 = 281,
+    Iab17_39 = 281,
     /// Tennis
-    Iab1740 = 282,
+    Iab17_40 = 282,
     /// Volleyball
-    Iab1741 = 283,
+    Iab17_41 = 283,
     /// Walking
-    Iab1742 = 284,
+    Iab17_42 = 284,
     /// Waterski/Wakeboard
-    Iab1743 = 285,
+    Iab17_43 = 285,
     /// World Soccer
-    Iab1744 = 286,
+    Iab17_44 = 286,
     /// Style & Fashion
     Iab18 = 287,
     /// Beauty
-    Iab181 = 288,
+    Iab18_1 = 288,
     /// Body Art
-    Iab182 = 289,
+    Iab18_2 = 289,
     /// Fashion
-    Iab183 = 290,
+    Iab18_3 = 290,
     /// Jewelry
-    Iab184 = 291,
+    Iab18_4 = 291,
     /// Clothing
-    Iab185 = 292,
+    Iab18_5 = 292,
     /// Accessories
-    Iab186 = 293,
+    Iab18_6 = 293,
     /// Technology & Computing
     Iab19 = 294,
     /// 3-D Graphics
-    Iab191 = 295,
+    Iab19_1 = 295,
     /// Animation
-    Iab192 = 296,
+    Iab19_2 = 296,
     /// Antivirus Software
-    Iab193 = 297,
+    Iab19_3 = 297,
     /// C/C++
-    Iab194 = 298,
+    Iab19_4 = 298,
     /// Cameras & Camcorders
-    Iab195 = 299,
+    Iab19_5 = 299,
     /// Cell  Phones
-    Iab196 = 300,
+    Iab19_6 = 300,
     /// Computer Certification
-    Iab197 = 301,
+    Iab19_7 = 301,
     /// Computer Networking
-    Iab198 = 302,
+    Iab19_8 = 302,
     /// Computer Peripherals
-    Iab199 = 303,
+    Iab19_9 = 303,
     /// Computer Reviews
-    Iab1910 = 304,
+    Iab19_10 = 304,
     /// Data Centers
-    Iab1911 = 305,
+    Iab19_11 = 305,
     /// Databases
-    Iab1912 = 306,
+    Iab19_12 = 306,
     /// Desktop Publishing
-    Iab1913 = 307,
+    Iab19_13 = 307,
     /// Desktop Video
-    Iab1914 = 308,
+    Iab19_14 = 308,
     /// Email
-    Iab1915 = 309,
+    Iab19_15 = 309,
     /// Graphics Software
-    Iab1916 = 310,
+    Iab19_16 = 310,
     /// Home Video/DVD
-    Iab1917 = 311,
+    Iab19_17 = 311,
     /// Internet Technology
-    Iab1918 = 312,
+    Iab19_18 = 312,
     /// Java
-    Iab1919 = 313,
+    Iab19_19 = 313,
     /// Javascript
-    Iab1920 = 314,
+    Iab19_20 = 314,
     /// Mac Support
-    Iab1921 = 315,
+    Iab19_21 = 315,
     /// MP3/MIDI
-    Iab1922 = 316,
+    Iab19_22 = 316,
     /// Net Conferencing
-    Iab1923 = 317,
+    Iab19_23 = 317,
     /// Net for Beginners
-    Iab1924 = 318,
+    Iab19_24 = 318,
     /// Network Security
-    Iab1925 = 319,
+    Iab19_25 = 319,
     /// Palmtops/PDAs
-    Iab1926 = 320,
+    Iab19_26 = 320,
     /// PC Support
-    Iab1927 = 321,
+    Iab19_27 = 321,
     /// Portable
-    Iab1928 = 322,
+    Iab19_28 = 322,
     /// Entertainment
-    Iab1929 = 323,
+    Iab19_29 = 323,
     /// Shareware/Freeware
-    Iab1930 = 324,
+    Iab19_30 = 324,
     /// Unix
-    Iab1931 = 325,
+    Iab19_31 = 325,
     /// Visual Basic
-    Iab1932 = 326,
+    Iab19_32 = 326,
     /// Web Clip Art
-    Iab1933 = 327,
+    Iab19_33 = 327,
     /// Web Design/HTML
-    Iab1934 = 328,
+    Iab19_34 = 328,
     /// Web Search
-    Iab1935 = 329,
+    Iab19_35 = 329,
     /// Windows
-    Iab1936 = 330,
+    Iab19_36 = 330,
     /// Travel
     Iab20 = 331,
     /// Adventure Travel
-    Iab201 = 332,
+    Iab20_1 = 332,
     /// Africa
-    Iab202 = 333,
+    Iab20_2 = 333,
     /// Air Travel
-    Iab203 = 334,
+    Iab20_3 = 334,
     /// Australia & New Zealand
-    Iab204 = 335,
+    Iab20_4 = 335,
     /// Bed & Breakfasts
-    Iab205 = 336,
+    Iab20_5 = 336,
     /// Budget Travel
-    Iab206 = 337,
+    Iab20_6 = 337,
     /// Business Travel
-    Iab207 = 338,
+    Iab20_7 = 338,
     /// By US Locale
-    Iab208 = 339,
+    Iab20_8 = 339,
     /// Camping
-    Iab209 = 340,
+    Iab20_9 = 340,
     /// Canada
-    Iab2010 = 341,
+    Iab20_10 = 341,
     /// Caribbean
-    Iab2011 = 342,
+    Iab20_11 = 342,
     /// Cruises
-    Iab2012 = 343,
+    Iab20_12 = 343,
     /// Eastern  Europe
-    Iab2013 = 344,
+    Iab20_13 = 344,
     /// Europe
-    Iab2014 = 345,
+    Iab20_14 = 345,
     /// France
-    Iab2015 = 346,
+    Iab20_15 = 346,
     /// Greece
-    Iab2016 = 347,
+    Iab20_16 = 347,
     /// Honeymoons/Getaways
-    Iab2017 = 348,
+    Iab20_17 = 348,
     /// Hotels
-    Iab2018 = 349,
+    Iab20_18 = 349,
     /// Italy
-    Iab2019 = 350,
+    Iab20_19 = 350,
     /// Japan
-    Iab2020 = 351,
+    Iab20_20 = 351,
     /// Mexico & Central America
-    Iab2021 = 352,
+    Iab20_21 = 352,
     /// National Parks
-    Iab2022 = 353,
+    Iab20_22 = 353,
     /// South America
-    Iab2023 = 354,
+    Iab20_23 = 354,
     /// Spas
-    Iab2024 = 355,
+    Iab20_24 = 355,
     /// Theme Parks
-    Iab2025 = 356,
+    Iab20_25 = 356,
     /// Traveling with Kids
-    Iab2026 = 357,
+    Iab20_26 = 357,
     /// United Kingdom
-    Iab2027 = 358,
+    Iab20_27 = 358,
     /// Real Estate
-    Iab21x = 359,
+    Iab21 = 359,
     /// Apartments
-    Iab211x = 360,
+    Iab21_1x = 360,
     /// Architects
-    Iab212x = 361,
+    Iab21_2x = 361,
     /// Buying/Selling Homes
-    Iab213x = 362,
+    Iab21_3x = 362,
     /// Shopping
-    Iab22x = 363,
+    Iab22 = 363,
     /// Contests & Freebies
-    Iab221x = 364,
+    Iab22_1x = 364,
     /// Couponing
-    Iab222x = 365,
+    Iab22_2x = 365,
     /// Comparison
-    Iab223x = 366,
+    Iab22_3x = 366,
     /// Engines
-    Iab224 = 367,
+    Iab22_4 = 367,
     /// Religion & Spirituality
-    Iab23x = 368,
+    Iab23 = 368,
     /// Alternative Religions
-    Iab231 = 369,
+    Iab23_1 = 369,
     /// Atheism/Agnosticism
-    Iab232 = 370,
+    Iab23_2 = 370,
     /// Buddhism
-    Iab233 = 371,
+    Iab23_3 = 371,
     /// Catholicism
-    Iab234 = 372,
+    Iab23_4 = 372,
     /// Christianity
-    Iab235 = 373,
+    Iab23_5 = 373,
     /// Hinduism
-    Iab236 = 374,
+    Iab23_6 = 374,
     /// Islam
-    Iab237 = 375,
+    Iab23_7 = 375,
     /// Judaism
-    Iab238 = 376,
+    Iab23_8 = 376,
     /// Latter-Day Saints
-    Iab239 = 377,
+    Iab23_9 = 377,
     /// Paga/Wiccan
-    Iab2310 = 378,
+    Iab23_10 = 378,
     /// Uncategorized
-    Iab24x = 379,
+    Iab24 = 379,
     /// Non-Standard Content
-    Iab25x = 380,
+    Iab25 = 380,
     /// Unmoderated UGC
-    Iab251 = 381,
+    Iab25_1 = 381,
     /// Extreme Graphic/Explicit Violence
-    Iab252 = 382,
+    Iab25_2 = 382,
     /// Pornography
-    Iab253 = 383,
+    Iab25_3 = 383,
     /// Profane Content
-    Iab254 = 384,
+    Iab25_4 = 384,
     /// Hate Content
-    Iab255 = 385,
+    Iab25_5 = 385,
     /// Under Construction
-    Iab256 = 386,
+    Iab25_6 = 386,
     /// Incentivized
-    Iab257 = 387,
+    Iab25_7 = 387,
     /// Illegal Content
-    Iab26x = 388,
+    Iab26 = 388,
     /// Illegal Content
-    Iab261 = 389,
+    Iab26_1 = 389,
     /// Warez
-    Iab262 = 390,
+    Iab26_2 = 390,
     /// Spyware/Malware
-    Iab263 = 391,
+    Iab26_3 = 391,
     /// Copyright Infringement
-    Iab264 = 392,
+    Iab26_4 = 392,
 }
 impl ContentCategory {
     /// String value of the enum field names used in the ProtoBuf definition.
@@ -3222,397 +3223,397 @@ impl ContentCategory {
         match self {
             ContentCategory::Undefined => "UNDEFINED",
             ContentCategory::Iab1 => "IAB1",
-            ContentCategory::Iab11 => "IAB1_1",
-            ContentCategory::Iab12 => "IAB1_2",
-            ContentCategory::Iab13 => "IAB1_3",
-            ContentCategory::Iab14 => "IAB1_4",
-            ContentCategory::Iab15 => "IAB1_5",
-            ContentCategory::Iab16 => "IAB1_6",
-            ContentCategory::Iab17 => "IAB1_7",
+            ContentCategory::Iab1_1 => "IAB1-1",
+            ContentCategory::Iab1_2 => "IAB1-2",
+            ContentCategory::Iab1_3 => "IAB1-3",
+            ContentCategory::Iab1_4 => "IAB1-4",
+            ContentCategory::Iab1_5 => "IAB1-5",
+            ContentCategory::Iab1_6 => "IAB1-6",
+            ContentCategory::Iab1_7 => "IAB1-7",
             ContentCategory::Iab2 => "IAB2",
-            ContentCategory::Iab21 => "IAB2_1",
-            ContentCategory::Iab22 => "IAB2_2",
-            ContentCategory::Iab23 => "IAB2_3",
-            ContentCategory::Iab24 => "IAB2_4",
-            ContentCategory::Iab25 => "IAB2_5",
-            ContentCategory::Iab26 => "IAB2_6",
-            ContentCategory::Iab27 => "IAB2_7",
-            ContentCategory::Iab28 => "IAB2_8",
-            ContentCategory::Iab29 => "IAB2_9",
-            ContentCategory::Iab210 => "IAB2_10",
-            ContentCategory::Iab211 => "IAB2_11",
-            ContentCategory::Iab212 => "IAB2_12",
-            ContentCategory::Iab213 => "IAB2_13",
-            ContentCategory::Iab214 => "IAB2_14",
-            ContentCategory::Iab215 => "IAB2_15",
-            ContentCategory::Iab216 => "IAB2_16",
-            ContentCategory::Iab217 => "IAB2_17",
-            ContentCategory::Iab218 => "IAB2_18",
-            ContentCategory::Iab219 => "IAB2_19",
-            ContentCategory::Iab220 => "IAB2_20",
-            ContentCategory::Iab221 => "IAB2_21",
-            ContentCategory::Iab222 => "IAB2_22",
-            ContentCategory::Iab223 => "IAB2_23",
+            ContentCategory::Iab2_1 => "IAB2-1",
+            ContentCategory::Iab2_2 => "IAB2-2",
+            ContentCategory::Iab2_3 => "IAB2-3",
+            ContentCategory::Iab2_4 => "IAB2-4",
+            ContentCategory::Iab2_5 => "IAB2-5",
+            ContentCategory::Iab2_6 => "IAB2-6",
+            ContentCategory::Iab2_7 => "IAB2-7",
+            ContentCategory::Iab2_8 => "IAB2-8",
+            ContentCategory::Iab2_9 => "IAB2-9",
+            ContentCategory::Iab2_10 => "IAB2-10",
+            ContentCategory::Iab2_11 => "IAB2-11",
+            ContentCategory::Iab2_12 => "IAB2-12",
+            ContentCategory::Iab2_13 => "IAB2-13",
+            ContentCategory::Iab2_14 => "IAB2-14",
+            ContentCategory::Iab2_15 => "IAB2-15",
+            ContentCategory::Iab2_16 => "IAB2-16",
+            ContentCategory::Iab2_17 => "IAB2-17",
+            ContentCategory::Iab2_18 => "IAB2-18",
+            ContentCategory::Iab2_19 => "IAB2-19",
+            ContentCategory::Iab2_20 => "IAB2-20",
+            ContentCategory::Iab2_21 => "IAB2-21",
+            ContentCategory::Iab2_22 => "IAB2-22",
+            ContentCategory::Iab2_23 => "IAB2-23",
             ContentCategory::Iab3 => "IAB3",
-            ContentCategory::Iab31 => "IAB3_1",
-            ContentCategory::Iab32 => "IAB3_2",
-            ContentCategory::Iab33 => "IAB3_3",
-            ContentCategory::Iab34 => "IAB3_4",
-            ContentCategory::Iab35 => "IAB3_5",
-            ContentCategory::Iab36 => "IAB3_6",
-            ContentCategory::Iab37 => "IAB3_7",
-            ContentCategory::Iab38 => "IAB3_8",
-            ContentCategory::Iab39 => "IAB3_9",
-            ContentCategory::Iab310 => "IAB3_10",
-            ContentCategory::Iab311 => "IAB3_11",
-            ContentCategory::Iab312 => "IAB3_12",
+            ContentCategory::Iab3_1 => "IAB3-1",
+            ContentCategory::Iab3_2 => "IAB3-2",
+            ContentCategory::Iab3_3 => "IAB3-3",
+            ContentCategory::Iab3_4 => "IAB3-4",
+            ContentCategory::Iab3_5 => "IAB3-5",
+            ContentCategory::Iab3_6 => "IAB3-6",
+            ContentCategory::Iab3_7 => "IAB3-7",
+            ContentCategory::Iab3_8 => "IAB3-8",
+            ContentCategory::Iab3_9 => "IAB3-9",
+            ContentCategory::Iab3_10 => "IAB3-10",
+            ContentCategory::Iab3_11 => "IAB3-11",
+            ContentCategory::Iab3_12 => "IAB3-12",
             ContentCategory::Iab4 => "IAB4",
-            ContentCategory::Iab41 => "IAB4_1",
-            ContentCategory::Iab42 => "IAB4_2",
-            ContentCategory::Iab43 => "IAB4_3",
-            ContentCategory::Iab44 => "IAB4_4",
-            ContentCategory::Iab45 => "IAB4_5",
-            ContentCategory::Iab46 => "IAB4_6",
-            ContentCategory::Iab47 => "IAB4_7",
-            ContentCategory::Iab48 => "IAB4_8",
-            ContentCategory::Iab49 => "IAB4_9",
-            ContentCategory::Iab410 => "IAB4_10",
-            ContentCategory::Iab411 => "IAB4_11",
+            ContentCategory::Iab4_1 => "IAB4-1",
+            ContentCategory::Iab4_2 => "IAB4-2",
+            ContentCategory::Iab4_3 => "IAB4-3",
+            ContentCategory::Iab4_4 => "IAB4-4",
+            ContentCategory::Iab4_5 => "IAB4-5",
+            ContentCategory::Iab4_6 => "IAB4-6",
+            ContentCategory::Iab4_7 => "IAB4-7",
+            ContentCategory::Iab4_8 => "IAB4-8",
+            ContentCategory::Iab4_9 => "IAB4-9",
+            ContentCategory::Iab4_10 => "IAB4-10",
+            ContentCategory::Iab4_11 => "IAB4-11",
             ContentCategory::Iab5 => "IAB5",
-            ContentCategory::Iab51 => "IAB5_1",
-            ContentCategory::Iab52 => "IAB5_2",
-            ContentCategory::Iab53 => "IAB5_3",
-            ContentCategory::Iab54 => "IAB5_4",
-            ContentCategory::Iab55 => "IAB5_5",
-            ContentCategory::Iab56 => "IAB5_6",
-            ContentCategory::Iab57 => "IAB5_7",
-            ContentCategory::Iab58 => "IAB5_8",
-            ContentCategory::Iab59 => "IAB5_9",
-            ContentCategory::Iab510 => "IAB5_10",
-            ContentCategory::Iab511 => "IAB5_11",
-            ContentCategory::Iab512 => "IAB5_12",
-            ContentCategory::Iab513 => "IAB5_13",
-            ContentCategory::Iab514 => "IAB5_14",
-            ContentCategory::Iab515 => "IAB5_15",
+            ContentCategory::Iab5_1 => "IAB5-1",
+            ContentCategory::Iab5_2 => "IAB5-2",
+            ContentCategory::Iab5_3 => "IAB5-3",
+            ContentCategory::Iab5_4 => "IAB5-4",
+            ContentCategory::Iab5_5 => "IAB5-5",
+            ContentCategory::Iab5_6 => "IAB5-6",
+            ContentCategory::Iab5_7 => "IAB5-7",
+            ContentCategory::Iab5_8 => "IAB5-8",
+            ContentCategory::Iab5_9 => "IAB5-9",
+            ContentCategory::Iab5_10 => "IAB5-10",
+            ContentCategory::Iab5_11 => "IAB5-11",
+            ContentCategory::Iab5_12 => "IAB5-12",
+            ContentCategory::Iab5_13 => "IAB5-13",
+            ContentCategory::Iab5_14 => "IAB5-14",
+            ContentCategory::Iab5_15 => "IAB5-15",
             ContentCategory::Iab6 => "IAB6",
-            ContentCategory::Iab61 => "IAB6_1",
-            ContentCategory::Iab62 => "IAB6_2",
-            ContentCategory::Iab63 => "IAB6_3",
-            ContentCategory::Iab64 => "IAB6_4",
-            ContentCategory::Iab65 => "IAB6_5",
-            ContentCategory::Iab66 => "IAB6_6",
-            ContentCategory::Iab67 => "IAB6_7",
-            ContentCategory::Iab68 => "IAB6_8",
-            ContentCategory::Iab69 => "IAB6_9",
+            ContentCategory::Iab6_1 => "IAB6-1",
+            ContentCategory::Iab6_2 => "IAB6-2",
+            ContentCategory::Iab6_3 => "IAB6-3",
+            ContentCategory::Iab6_4 => "IAB6-4",
+            ContentCategory::Iab6_5 => "IAB6-5",
+            ContentCategory::Iab6_6 => "IAB6-6",
+            ContentCategory::Iab6_7 => "IAB6-7",
+            ContentCategory::Iab6_8 => "IAB6-8",
+            ContentCategory::Iab6_9 => "IAB6-9",
             ContentCategory::Iab7 => "IAB7",
-            ContentCategory::Iab71 => "IAB7_1",
-            ContentCategory::Iab72 => "IAB7_2",
-            ContentCategory::Iab73 => "IAB7_3",
-            ContentCategory::Iab74 => "IAB7_4",
-            ContentCategory::Iab75 => "IAB7_5",
-            ContentCategory::Iab76 => "IAB7_6",
-            ContentCategory::Iab77 => "IAB7_7",
-            ContentCategory::Iab78 => "IAB7_8",
-            ContentCategory::Iab79 => "IAB7_9",
-            ContentCategory::Iab710 => "IAB7_10",
-            ContentCategory::Iab711 => "IAB7_11",
-            ContentCategory::Iab712 => "IAB7_12",
-            ContentCategory::Iab713 => "IAB7_13",
-            ContentCategory::Iab714 => "IAB7_14",
-            ContentCategory::Iab715 => "IAB7_15",
-            ContentCategory::Iab716 => "IAB7_16",
-            ContentCategory::Iab717 => "IAB7_17",
-            ContentCategory::Iab718 => "IAB7_18",
-            ContentCategory::Iab719 => "IAB7_19",
-            ContentCategory::Iab720 => "IAB7_20",
-            ContentCategory::Iab721 => "IAB7_21",
-            ContentCategory::Iab722 => "IAB7_22",
-            ContentCategory::Iab723 => "IAB7_23",
-            ContentCategory::Iab724 => "IAB7_24",
-            ContentCategory::Iab725 => "IAB7_25",
-            ContentCategory::Iab726 => "IAB7_26",
-            ContentCategory::Iab727 => "IAB7_27",
-            ContentCategory::Iab728 => "IAB7_28",
-            ContentCategory::Iab729 => "IAB7_29",
-            ContentCategory::Iab730 => "IAB7_30",
-            ContentCategory::Iab731 => "IAB7_31",
-            ContentCategory::Iab732 => "IAB7_32",
-            ContentCategory::Iab733 => "IAB7_33",
-            ContentCategory::Iab734 => "IAB7_34",
-            ContentCategory::Iab735 => "IAB7_35",
-            ContentCategory::Iab736 => "IAB7_36",
-            ContentCategory::Iab737 => "IAB7_37",
-            ContentCategory::Iab738 => "IAB7_38",
-            ContentCategory::Iab739 => "IAB7_39",
-            ContentCategory::Iab740 => "IAB7_40",
-            ContentCategory::Iab741 => "IAB7_41",
-            ContentCategory::Iab742 => "IAB7_42",
-            ContentCategory::Iab743 => "IAB7_43",
-            ContentCategory::Iab744 => "IAB7_44",
-            ContentCategory::Iab745 => "IAB7_45",
+            ContentCategory::Iab7_1 => "IAB7-1",
+            ContentCategory::Iab7_2 => "IAB7-2",
+            ContentCategory::Iab7_3 => "IAB7-3",
+            ContentCategory::Iab7_4 => "IAB7-4",
+            ContentCategory::Iab7_5 => "IAB7-5",
+            ContentCategory::Iab7_6 => "IAB7-6",
+            ContentCategory::Iab7_7 => "IAB7-7",
+            ContentCategory::Iab7_8 => "IAB7-8",
+            ContentCategory::Iab7_9 => "IAB7-9",
+            ContentCategory::Iab7_10 => "IAB7-10",
+            ContentCategory::Iab7_11 => "IAB7-11",
+            ContentCategory::Iab7_12 => "IAB7-12",
+            ContentCategory::Iab7_13 => "IAB7-13",
+            ContentCategory::Iab7_14 => "IAB7-14",
+            ContentCategory::Iab7_15 => "IAB7-15",
+            ContentCategory::Iab7_16 => "IAB7-16",
+            ContentCategory::Iab7_17 => "IAB7-17",
+            ContentCategory::Iab7_18 => "IAB7-18",
+            ContentCategory::Iab7_19 => "IAB7-19",
+            ContentCategory::Iab7_20 => "IAB7-20",
+            ContentCategory::Iab7_21 => "IAB7-21",
+            ContentCategory::Iab7_22 => "IAB7-22",
+            ContentCategory::Iab7_23 => "IAB7-23",
+            ContentCategory::Iab7_24 => "IAB7-24",
+            ContentCategory::Iab7_25 => "IAB7-25",
+            ContentCategory::Iab7_26 => "IAB7-26",
+            ContentCategory::Iab7_27 => "IAB7-27",
+            ContentCategory::Iab7_28 => "IAB7-28",
+            ContentCategory::Iab7_29 => "IAB7-29",
+            ContentCategory::Iab7_30 => "IAB7-30",
+            ContentCategory::Iab7_31 => "IAB7-31",
+            ContentCategory::Iab7_32 => "IAB7-32",
+            ContentCategory::Iab7_33 => "IAB7-33",
+            ContentCategory::Iab7_34 => "IAB7-34",
+            ContentCategory::Iab7_35 => "IAB7-35",
+            ContentCategory::Iab7_36 => "IAB7-36",
+            ContentCategory::Iab7_37 => "IAB7-37",
+            ContentCategory::Iab7_38 => "IAB7-38",
+            ContentCategory::Iab7_39 => "IAB7-39",
+            ContentCategory::Iab7_40 => "IAB7-40",
+            ContentCategory::Iab7_41 => "IAB7-41",
+            ContentCategory::Iab7_42 => "IAB7-42",
+            ContentCategory::Iab7_43 => "IAB7-43",
+            ContentCategory::Iab7_44 => "IAB7-44",
+            ContentCategory::Iab7_45 => "IAB7-45",
             ContentCategory::Iab8 => "IAB8",
-            ContentCategory::Iab81 => "IAB8_1",
-            ContentCategory::Iab82 => "IAB8_2",
-            ContentCategory::Iab83 => "IAB8_3",
-            ContentCategory::Iab84 => "IAB8_4",
-            ContentCategory::Iab85 => "IAB8_5",
-            ContentCategory::Iab86 => "IAB8_6",
-            ContentCategory::Iab87 => "IAB8_7",
-            ContentCategory::Iab88 => "IAB8_8",
-            ContentCategory::Iab89 => "IAB8_9",
-            ContentCategory::Iab810 => "IAB8_10",
-            ContentCategory::Iab811 => "IAB8_11",
-            ContentCategory::Iab812 => "IAB8_12",
-            ContentCategory::Iab813 => "IAB8_13",
-            ContentCategory::Iab814 => "IAB8_14",
-            ContentCategory::Iab815 => "IAB8_15",
-            ContentCategory::Iab816 => "IAB8_16",
-            ContentCategory::Iab817 => "IAB8_17",
-            ContentCategory::Iab818 => "IAB8_18",
+            ContentCategory::Iab8_1 => "IAB8-1",
+            ContentCategory::Iab8_2 => "IAB8-2",
+            ContentCategory::Iab8_3 => "IAB8-3",
+            ContentCategory::Iab8_4 => "IAB8-4",
+            ContentCategory::Iab8_5 => "IAB8-5",
+            ContentCategory::Iab8_6 => "IAB8-6",
+            ContentCategory::Iab8_7 => "IAB8-7",
+            ContentCategory::Iab8_8 => "IAB8-8",
+            ContentCategory::Iab8_9 => "IAB8-9",
+            ContentCategory::Iab8_10 => "IAB8-10",
+            ContentCategory::Iab8_11 => "IAB8-11",
+            ContentCategory::Iab8_12 => "IAB8-12",
+            ContentCategory::Iab8_13 => "IAB8-13",
+            ContentCategory::Iab8_14 => "IAB8-14",
+            ContentCategory::Iab8_15 => "IAB8-15",
+            ContentCategory::Iab8_16 => "IAB8-16",
+            ContentCategory::Iab8_17 => "IAB8-17",
+            ContentCategory::Iab8_18 => "IAB8-18",
             ContentCategory::Iab9 => "IAB9",
-            ContentCategory::Iab91 => "IAB9_1",
-            ContentCategory::Iab92 => "IAB9_2",
-            ContentCategory::Iab93 => "IAB9_3",
-            ContentCategory::Iab94 => "IAB9_4",
-            ContentCategory::Iab95 => "IAB9_5",
-            ContentCategory::Iab96 => "IAB9_6",
-            ContentCategory::Iab97 => "IAB9_7",
-            ContentCategory::Iab98 => "IAB9_8",
-            ContentCategory::Iab99 => "IAB9_9",
-            ContentCategory::Iab910 => "IAB9_10",
-            ContentCategory::Iab911 => "IAB9_11",
-            ContentCategory::Iab912 => "IAB9_12",
-            ContentCategory::Iab913 => "IAB9_13",
-            ContentCategory::Iab914 => "IAB9_14",
-            ContentCategory::Iab915 => "IAB9_15",
-            ContentCategory::Iab916 => "IAB9_16",
-            ContentCategory::Iab917 => "IAB9_17",
-            ContentCategory::Iab918 => "IAB9_18",
-            ContentCategory::Iab919 => "IAB9_19",
-            ContentCategory::Iab920 => "IAB9_20",
-            ContentCategory::Iab921 => "IAB9_21",
-            ContentCategory::Iab922 => "IAB9_22",
-            ContentCategory::Iab923 => "IAB9_23",
-            ContentCategory::Iab924 => "IAB9_24",
-            ContentCategory::Iab925 => "IAB9_25",
-            ContentCategory::Iab926 => "IAB9_26",
-            ContentCategory::Iab927 => "IAB9_27",
-            ContentCategory::Iab928 => "IAB9_28",
-            ContentCategory::Iab929 => "IAB9_29",
-            ContentCategory::Iab930 => "IAB9_30",
-            ContentCategory::Iab931 => "IAB9_31",
+            ContentCategory::Iab9_1 => "IAB9-1",
+            ContentCategory::Iab9_2 => "IAB9-2",
+            ContentCategory::Iab9_3 => "IAB9-3",
+            ContentCategory::Iab9_4 => "IAB9-4",
+            ContentCategory::Iab9_5 => "IAB9-5",
+            ContentCategory::Iab9_6 => "IAB9-6",
+            ContentCategory::Iab9_7 => "IAB9-7",
+            ContentCategory::Iab9_8 => "IAB9-8",
+            ContentCategory::Iab9_9 => "IAB9-9",
+            ContentCategory::Iab9_10 => "IAB9-10",
+            ContentCategory::Iab9_11 => "IAB9-11",
+            ContentCategory::Iab9_12 => "IAB9-12",
+            ContentCategory::Iab9_13 => "IAB9-13",
+            ContentCategory::Iab9_14 => "IAB9-14",
+            ContentCategory::Iab9_15 => "IAB9-15",
+            ContentCategory::Iab9_16 => "IAB9-16",
+            ContentCategory::Iab9_17 => "IAB9-17",
+            ContentCategory::Iab9_18 => "IAB9-18",
+            ContentCategory::Iab9_19 => "IAB9-19",
+            ContentCategory::Iab9_20 => "IAB9-20",
+            ContentCategory::Iab9_21 => "IAB9-21",
+            ContentCategory::Iab9_22 => "IAB9-22",
+            ContentCategory::Iab9_23 => "IAB9-23",
+            ContentCategory::Iab9_24 => "IAB9-24",
+            ContentCategory::Iab9_25 => "IAB9-25",
+            ContentCategory::Iab9_26 => "IAB9-26",
+            ContentCategory::Iab9_27 => "IAB9-27",
+            ContentCategory::Iab9_28 => "IAB9-28",
+            ContentCategory::Iab9_29 => "IAB9-29",
+            ContentCategory::Iab9_30 => "IAB9-30",
+            ContentCategory::Iab9_31 => "IAB9-31",
             ContentCategory::Iab10 => "IAB10",
-            ContentCategory::Iab101 => "IAB10_1",
-            ContentCategory::Iab102 => "IAB10_2",
-            ContentCategory::Iab103 => "IAB10_3",
-            ContentCategory::Iab104 => "IAB10_4",
-            ContentCategory::Iab105 => "IAB10_5",
-            ContentCategory::Iab106 => "IAB10_6",
-            ContentCategory::Iab107 => "IAB10_7",
-            ContentCategory::Iab108 => "IAB10_8",
-            ContentCategory::Iab109 => "IAB10_9",
-            ContentCategory::Iab11x => "IAB11X",
-            ContentCategory::Iab111 => "IAB11_1",
-            ContentCategory::Iab112 => "IAB11_2",
-            ContentCategory::Iab113 => "IAB11_3",
-            ContentCategory::Iab114 => "IAB11_4",
-            ContentCategory::Iab115 => "IAB11_5",
-            ContentCategory::Iab12x => "IAB12X",
-            ContentCategory::Iab121 => "IAB12_1",
-            ContentCategory::Iab122 => "IAB12_2",
-            ContentCategory::Iab123 => "IAB12_3",
-            ContentCategory::Iab13x => "IAB13X",
-            ContentCategory::Iab131 => "IAB13_1",
-            ContentCategory::Iab132 => "IAB13_2",
-            ContentCategory::Iab133 => "IAB13_3",
-            ContentCategory::Iab134 => "IAB13_4",
-            ContentCategory::Iab135 => "IAB13_5",
-            ContentCategory::Iab136 => "IAB13_6",
-            ContentCategory::Iab137 => "IAB13_7",
-            ContentCategory::Iab138 => "IAB13_8",
-            ContentCategory::Iab139 => "IAB13_9",
-            ContentCategory::Iab1310 => "IAB13_10",
-            ContentCategory::Iab1311 => "IAB13_11",
-            ContentCategory::Iab1312 => "IAB13_12",
-            ContentCategory::Iab14x => "IAB14X",
-            ContentCategory::Iab141 => "IAB14_1",
-            ContentCategory::Iab142 => "IAB14_2",
-            ContentCategory::Iab143 => "IAB14_3",
-            ContentCategory::Iab144 => "IAB14_4",
-            ContentCategory::Iab145 => "IAB14_5",
-            ContentCategory::Iab146 => "IAB14_6",
-            ContentCategory::Iab147 => "IAB14_7",
-            ContentCategory::Iab148 => "IAB14_8",
-            ContentCategory::Iab15x => "IAB15X",
-            ContentCategory::Iab151 => "IAB15_1",
-            ContentCategory::Iab152 => "IAB15_2",
-            ContentCategory::Iab153 => "IAB15_3",
-            ContentCategory::Iab154 => "IAB15_4",
-            ContentCategory::Iab155 => "IAB15_5",
-            ContentCategory::Iab156 => "IAB15_6",
-            ContentCategory::Iab157 => "IAB15_7",
-            ContentCategory::Iab158 => "IAB15_8",
-            ContentCategory::Iab159 => "IAB15_9",
-            ContentCategory::Iab1510 => "IAB15_10",
-            ContentCategory::Iab16x => "IAB16X",
-            ContentCategory::Iab161 => "IAB16_1",
-            ContentCategory::Iab162 => "IAB16_2",
-            ContentCategory::Iab163 => "IAB16_3",
-            ContentCategory::Iab164 => "IAB16_4",
-            ContentCategory::Iab165 => "IAB16_5",
-            ContentCategory::Iab166 => "IAB16_6",
-            ContentCategory::Iab167 => "IAB16_7",
-            ContentCategory::Iab17x => "IAB17X",
-            ContentCategory::Iab171 => "IAB17_1",
-            ContentCategory::Iab172 => "IAB17_2",
-            ContentCategory::Iab173 => "IAB17_3",
-            ContentCategory::Iab174 => "IAB17_4",
-            ContentCategory::Iab175 => "IAB17_5",
-            ContentCategory::Iab176 => "IAB17_6",
-            ContentCategory::Iab177 => "IAB17_7",
-            ContentCategory::Iab178 => "IAB17_8",
-            ContentCategory::Iab179 => "IAB17_9",
-            ContentCategory::Iab1710 => "IAB17_10",
-            ContentCategory::Iab1711 => "IAB17_11",
-            ContentCategory::Iab1712 => "IAB17_12",
-            ContentCategory::Iab1713 => "IAB17_13",
-            ContentCategory::Iab1714 => "IAB17_14",
-            ContentCategory::Iab1715 => "IAB17_15",
-            ContentCategory::Iab1716 => "IAB17_16",
-            ContentCategory::Iab1717 => "IAB17_17",
-            ContentCategory::Iab1718 => "IAB17_18",
-            ContentCategory::Iab1719 => "IAB17_19",
-            ContentCategory::Iab1720 => "IAB17_20",
-            ContentCategory::Iab1721 => "IAB17_21",
-            ContentCategory::Iab1722 => "IAB17_22",
-            ContentCategory::Iab1723 => "IAB17_23",
-            ContentCategory::Iab1724 => "IAB17_24",
-            ContentCategory::Iab1725 => "IAB17_25",
-            ContentCategory::Iab1726 => "IAB17_26",
-            ContentCategory::Iab1727 => "IAB17_27",
-            ContentCategory::Iab1728 => "IAB17_28",
-            ContentCategory::Iab1729 => "IAB17_29",
-            ContentCategory::Iab1730 => "IAB17_30",
-            ContentCategory::Iab1731 => "IAB17_31",
-            ContentCategory::Iab1732 => "IAB17_32",
-            ContentCategory::Iab1733 => "IAB17_33",
-            ContentCategory::Iab1734 => "IAB17_34",
-            ContentCategory::Iab1735 => "IAB17_35",
-            ContentCategory::Iab1736 => "IAB17_36",
-            ContentCategory::Iab1737 => "IAB17_37",
-            ContentCategory::Iab1738 => "IAB17_38",
-            ContentCategory::Iab1739 => "IAB17_39",
-            ContentCategory::Iab1740 => "IAB17_40",
-            ContentCategory::Iab1741 => "IAB17_41",
-            ContentCategory::Iab1742 => "IAB17_42",
-            ContentCategory::Iab1743 => "IAB17_43",
-            ContentCategory::Iab1744 => "IAB17_44",
+            ContentCategory::Iab10_1 => "IAB10-1",
+            ContentCategory::Iab10_2 => "IAB10-2",
+            ContentCategory::Iab10_3 => "IAB10-3",
+            ContentCategory::Iab10_4 => "IAB10-4",
+            ContentCategory::Iab10_5 => "IAB10-5",
+            ContentCategory::Iab10_6 => "IAB10-6",
+            ContentCategory::Iab10_7 => "IAB10-7",
+            ContentCategory::Iab10_8 => "IAB10-8",
+            ContentCategory::Iab10_9 => "IAB10-9",
+            ContentCategory::Iab11 => "IAB11",
+            ContentCategory::Iab11_1 => "IAB11-1",
+            ContentCategory::Iab11_2 => "IAB11-2",
+            ContentCategory::Iab11_3 => "IAB11-3",
+            ContentCategory::Iab11_4 => "IAB11-4",
+            ContentCategory::Iab11_5 => "IAB11-5",
+            ContentCategory::Iab12 => "IAB12",
+            ContentCategory::Iab12_1 => "IAB12-1",
+            ContentCategory::Iab12_2 => "IAB12-2",
+            ContentCategory::Iab12_3 => "IAB12-3",
+            ContentCategory::Iab13 => "IAB13",
+            ContentCategory::Iab13_1 => "IAB13-1",
+            ContentCategory::Iab13_2 => "IAB13-2",
+            ContentCategory::Iab13_3 => "IAB13-3",
+            ContentCategory::Iab13_4 => "IAB13-4",
+            ContentCategory::Iab13_5 => "IAB13-5",
+            ContentCategory::Iab13_6 => "IAB13-6",
+            ContentCategory::Iab13_7 => "IAB13-7",
+            ContentCategory::Iab13_8 => "IAB13-8",
+            ContentCategory::Iab13_9 => "IAB13-9",
+            ContentCategory::Iab13_10 => "IAB13-10",
+            ContentCategory::Iab13_11 => "IAB13-11",
+            ContentCategory::Iab13_12 => "IAB13-12",
+            ContentCategory::Iab14 => "IAB14",
+            ContentCategory::Iab14_1 => "IAB14-1",
+            ContentCategory::Iab14_2 => "IAB14-2",
+            ContentCategory::Iab14_3 => "IAB14-3",
+            ContentCategory::Iab14_4 => "IAB14-4",
+            ContentCategory::Iab14_5 => "IAB14-5",
+            ContentCategory::Iab14_6 => "IAB14-6",
+            ContentCategory::Iab14_7 => "IAB14-7",
+            ContentCategory::Iab14_8 => "IAB14-8",
+            ContentCategory::Iab15 => "IAB15",
+            ContentCategory::Iab15_1 => "IAB15-1",
+            ContentCategory::Iab15_2 => "IAB15-2",
+            ContentCategory::Iab15_3 => "IAB15-3",
+            ContentCategory::Iab15_4 => "IAB15-4",
+            ContentCategory::Iab15_5 => "IAB15-5",
+            ContentCategory::Iab15_6 => "IAB15-6",
+            ContentCategory::Iab15_7 => "IAB15-7",
+            ContentCategory::Iab15_8 => "IAB15-8",
+            ContentCategory::Iab15_9 => "IAB15-9",
+            ContentCategory::Iab15_10 => "IAB15-10",
+            ContentCategory::Iab16 => "IAB16",
+            ContentCategory::Iab16_1 => "IAB16-1",
+            ContentCategory::Iab16_2 => "IAB16-2",
+            ContentCategory::Iab16_3 => "IAB16-3",
+            ContentCategory::Iab16_4 => "IAB16-4",
+            ContentCategory::Iab16_5 => "IAB16-5",
+            ContentCategory::Iab16_6 => "IAB16-6",
+            ContentCategory::Iab16_7 => "IAB16-7",
+            ContentCategory::Iab17 => "IAB17",
+            ContentCategory::Iab17_1 => "IAB17-1",
+            ContentCategory::Iab17_2 => "IAB17-2",
+            ContentCategory::Iab17_3 => "IAB17-3",
+            ContentCategory::Iab17_4 => "IAB17-4",
+            ContentCategory::Iab17_5 => "IAB17-5",
+            ContentCategory::Iab17_6 => "IAB17-6",
+            ContentCategory::Iab17_7 => "IAB17-7",
+            ContentCategory::Iab17_8 => "IAB17-8",
+            ContentCategory::Iab17_9 => "IAB17-9",
+            ContentCategory::Iab17_10 => "IAB17-10",
+            ContentCategory::Iab17_11 => "IAB17-11",
+            ContentCategory::Iab17_12 => "IAB17-12",
+            ContentCategory::Iab17_13 => "IAB17-13",
+            ContentCategory::Iab17_14 => "IAB17-14",
+            ContentCategory::Iab17_15 => "IAB17-15",
+            ContentCategory::Iab17_16 => "IAB17-16",
+            ContentCategory::Iab17_17 => "IAB17-17",
+            ContentCategory::Iab17_18 => "IAB17-18",
+            ContentCategory::Iab17_19 => "IAB17-19",
+            ContentCategory::Iab17_20 => "IAB17-20",
+            ContentCategory::Iab17_21 => "IAB17-21",
+            ContentCategory::Iab17_22 => "IAB17-22",
+            ContentCategory::Iab17_23 => "IAB17-23",
+            ContentCategory::Iab17_24 => "IAB17-24",
+            ContentCategory::Iab17_25 => "IAB17-25",
+            ContentCategory::Iab17_26 => "IAB17-26",
+            ContentCategory::Iab17_27 => "IAB17-27",
+            ContentCategory::Iab17_28 => "IAB17-28",
+            ContentCategory::Iab17_29 => "IAB17-29",
+            ContentCategory::Iab17_30 => "IAB17-30",
+            ContentCategory::Iab17_31 => "IAB17-31",
+            ContentCategory::Iab17_32 => "IAB17-32",
+            ContentCategory::Iab17_33 => "IAB17-33",
+            ContentCategory::Iab17_34 => "IAB17-34",
+            ContentCategory::Iab17_35 => "IAB17-35",
+            ContentCategory::Iab17_36 => "IAB17-36",
+            ContentCategory::Iab17_37 => "IAB17-37",
+            ContentCategory::Iab17_38 => "IAB17-38",
+            ContentCategory::Iab17_39 => "IAB17-39",
+            ContentCategory::Iab17_40 => "IAB17-40",
+            ContentCategory::Iab17_41 => "IAB17-41",
+            ContentCategory::Iab17_42 => "IAB17-42",
+            ContentCategory::Iab17_43 => "IAB17-43",
+            ContentCategory::Iab17_44 => "IAB17-44",
             ContentCategory::Iab18 => "IAB18",
-            ContentCategory::Iab181 => "IAB18_1",
-            ContentCategory::Iab182 => "IAB18_2",
-            ContentCategory::Iab183 => "IAB18_3",
-            ContentCategory::Iab184 => "IAB18_4",
-            ContentCategory::Iab185 => "IAB18_5",
-            ContentCategory::Iab186 => "IAB18_6",
+            ContentCategory::Iab18_1 => "IAB18-1",
+            ContentCategory::Iab18_2 => "IAB18-2",
+            ContentCategory::Iab18_3 => "IAB18-3",
+            ContentCategory::Iab18_4 => "IAB18-4",
+            ContentCategory::Iab18_5 => "IAB18-5",
+            ContentCategory::Iab18_6 => "IAB18-6",
             ContentCategory::Iab19 => "IAB19",
-            ContentCategory::Iab191 => "IAB19_1",
-            ContentCategory::Iab192 => "IAB19_2",
-            ContentCategory::Iab193 => "IAB19_3",
-            ContentCategory::Iab194 => "IAB19_4",
-            ContentCategory::Iab195 => "IAB19_5",
-            ContentCategory::Iab196 => "IAB19_6",
-            ContentCategory::Iab197 => "IAB19_7",
-            ContentCategory::Iab198 => "IAB19_8",
-            ContentCategory::Iab199 => "IAB19_9",
-            ContentCategory::Iab1910 => "IAB19_10",
-            ContentCategory::Iab1911 => "IAB19_11",
-            ContentCategory::Iab1912 => "IAB19_12",
-            ContentCategory::Iab1913 => "IAB19_13",
-            ContentCategory::Iab1914 => "IAB19_14",
-            ContentCategory::Iab1915 => "IAB19_15",
-            ContentCategory::Iab1916 => "IAB19_16",
-            ContentCategory::Iab1917 => "IAB19_17",
-            ContentCategory::Iab1918 => "IAB19_18",
-            ContentCategory::Iab1919 => "IAB19_19",
-            ContentCategory::Iab1920 => "IAB19_20",
-            ContentCategory::Iab1921 => "IAB19_21",
-            ContentCategory::Iab1922 => "IAB19_22",
-            ContentCategory::Iab1923 => "IAB19_23",
-            ContentCategory::Iab1924 => "IAB19_24",
-            ContentCategory::Iab1925 => "IAB19_25",
-            ContentCategory::Iab1926 => "IAB19_26",
-            ContentCategory::Iab1927 => "IAB19_27",
-            ContentCategory::Iab1928 => "IAB19_28",
-            ContentCategory::Iab1929 => "IAB19_29",
-            ContentCategory::Iab1930 => "IAB19_30",
-            ContentCategory::Iab1931 => "IAB19_31",
-            ContentCategory::Iab1932 => "IAB19_32",
-            ContentCategory::Iab1933 => "IAB19_33",
-            ContentCategory::Iab1934 => "IAB19_34",
-            ContentCategory::Iab1935 => "IAB19_35",
-            ContentCategory::Iab1936 => "IAB19_36",
+            ContentCategory::Iab19_1 => "IAB19-1",
+            ContentCategory::Iab19_2 => "IAB19-2",
+            ContentCategory::Iab19_3 => "IAB19-3",
+            ContentCategory::Iab19_4 => "IAB19-4",
+            ContentCategory::Iab19_5 => "IAB19-5",
+            ContentCategory::Iab19_6 => "IAB19-6",
+            ContentCategory::Iab19_7 => "IAB19-7",
+            ContentCategory::Iab19_8 => "IAB19-8",
+            ContentCategory::Iab19_9 => "IAB19-9",
+            ContentCategory::Iab19_10 => "IAB19-10",
+            ContentCategory::Iab19_11 => "IAB19-11",
+            ContentCategory::Iab19_12 => "IAB19-12",
+            ContentCategory::Iab19_13 => "IAB19-13",
+            ContentCategory::Iab19_14 => "IAB19-14",
+            ContentCategory::Iab19_15 => "IAB19-15",
+            ContentCategory::Iab19_16 => "IAB19-16",
+            ContentCategory::Iab19_17 => "IAB19-17",
+            ContentCategory::Iab19_18 => "IAB19-18",
+            ContentCategory::Iab19_19 => "IAB19-19",
+            ContentCategory::Iab19_20 => "IAB19-20",
+            ContentCategory::Iab19_21 => "IAB19-21",
+            ContentCategory::Iab19_22 => "IAB19-22",
+            ContentCategory::Iab19_23 => "IAB19-23",
+            ContentCategory::Iab19_24 => "IAB19-24",
+            ContentCategory::Iab19_25 => "IAB19-25",
+            ContentCategory::Iab19_26 => "IAB19-26",
+            ContentCategory::Iab19_27 => "IAB19-27",
+            ContentCategory::Iab19_28 => "IAB19-28",
+            ContentCategory::Iab19_29 => "IAB19-29",
+            ContentCategory::Iab19_30 => "IAB19-30",
+            ContentCategory::Iab19_31 => "IAB19-31",
+            ContentCategory::Iab19_32 => "IAB19-32",
+            ContentCategory::Iab19_33 => "IAB19-33",
+            ContentCategory::Iab19_34 => "IAB19-34",
+            ContentCategory::Iab19_35 => "IAB19-35",
+            ContentCategory::Iab19_36 => "IAB19-36",
             ContentCategory::Iab20 => "IAB20",
-            ContentCategory::Iab201 => "IAB20_1",
-            ContentCategory::Iab202 => "IAB20_2",
-            ContentCategory::Iab203 => "IAB20_3",
-            ContentCategory::Iab204 => "IAB20_4",
-            ContentCategory::Iab205 => "IAB20_5",
-            ContentCategory::Iab206 => "IAB20_6",
-            ContentCategory::Iab207 => "IAB20_7",
-            ContentCategory::Iab208 => "IAB20_8",
-            ContentCategory::Iab209 => "IAB20_9",
-            ContentCategory::Iab2010 => "IAB20_10",
-            ContentCategory::Iab2011 => "IAB20_11",
-            ContentCategory::Iab2012 => "IAB20_12",
-            ContentCategory::Iab2013 => "IAB20_13",
-            ContentCategory::Iab2014 => "IAB20_14",
-            ContentCategory::Iab2015 => "IAB20_15",
-            ContentCategory::Iab2016 => "IAB20_16",
-            ContentCategory::Iab2017 => "IAB20_17",
-            ContentCategory::Iab2018 => "IAB20_18",
-            ContentCategory::Iab2019 => "IAB20_19",
-            ContentCategory::Iab2020 => "IAB20_20",
-            ContentCategory::Iab2021 => "IAB20_21",
-            ContentCategory::Iab2022 => "IAB20_22",
-            ContentCategory::Iab2023 => "IAB20_23",
-            ContentCategory::Iab2024 => "IAB20_24",
-            ContentCategory::Iab2025 => "IAB20_25",
-            ContentCategory::Iab2026 => "IAB20_26",
-            ContentCategory::Iab2027 => "IAB20_27",
-            ContentCategory::Iab21x => "IAB21X",
-            ContentCategory::Iab211x => "IAB21_1X",
-            ContentCategory::Iab212x => "IAB21_2X",
-            ContentCategory::Iab213x => "IAB21_3X",
-            ContentCategory::Iab22x => "IAB22X",
-            ContentCategory::Iab221x => "IAB22_1X",
-            ContentCategory::Iab222x => "IAB22_2X",
-            ContentCategory::Iab223x => "IAB22_3X",
-            ContentCategory::Iab224 => "IAB22_4",
-            ContentCategory::Iab23x => "IAB23X",
-            ContentCategory::Iab231 => "IAB23_1",
-            ContentCategory::Iab232 => "IAB23_2",
-            ContentCategory::Iab233 => "IAB23_3",
-            ContentCategory::Iab234 => "IAB23_4",
-            ContentCategory::Iab235 => "IAB23_5",
-            ContentCategory::Iab236 => "IAB23_6",
-            ContentCategory::Iab237 => "IAB23_7",
-            ContentCategory::Iab238 => "IAB23_8",
-            ContentCategory::Iab239 => "IAB23_9",
-            ContentCategory::Iab2310 => "IAB23_10",
-            ContentCategory::Iab24x => "IAB24X",
-            ContentCategory::Iab25x => "IAB25X",
-            ContentCategory::Iab251 => "IAB25_1",
-            ContentCategory::Iab252 => "IAB25_2",
-            ContentCategory::Iab253 => "IAB25_3",
-            ContentCategory::Iab254 => "IAB25_4",
-            ContentCategory::Iab255 => "IAB25_5",
-            ContentCategory::Iab256 => "IAB25_6",
-            ContentCategory::Iab257 => "IAB25_7",
-            ContentCategory::Iab26x => "IAB26X",
-            ContentCategory::Iab261 => "IAB26_1",
-            ContentCategory::Iab262 => "IAB26_2",
-            ContentCategory::Iab263 => "IAB26_3",
-            ContentCategory::Iab264 => "IAB26_4",
+            ContentCategory::Iab20_1 => "IAB20-1",
+            ContentCategory::Iab20_2 => "IAB20-2",
+            ContentCategory::Iab20_3 => "IAB20-3",
+            ContentCategory::Iab20_4 => "IAB20-4",
+            ContentCategory::Iab20_5 => "IAB20-5",
+            ContentCategory::Iab20_6 => "IAB20-6",
+            ContentCategory::Iab20_7 => "IAB20-7",
+            ContentCategory::Iab20_8 => "IAB20-8",
+            ContentCategory::Iab20_9 => "IAB20-9",
+            ContentCategory::Iab20_10 => "IAB20-10",
+            ContentCategory::Iab20_11 => "IAB20-11",
+            ContentCategory::Iab20_12 => "IAB20-12",
+            ContentCategory::Iab20_13 => "IAB20-13",
+            ContentCategory::Iab20_14 => "IAB20-14",
+            ContentCategory::Iab20_15 => "IAB20-15",
+            ContentCategory::Iab20_16 => "IAB20-16",
+            ContentCategory::Iab20_17 => "IAB20-17",
+            ContentCategory::Iab20_18 => "IAB20-18",
+            ContentCategory::Iab20_19 => "IAB20-19",
+            ContentCategory::Iab20_20 => "IAB20-20",
+            ContentCategory::Iab20_21 => "IAB20-21",
+            ContentCategory::Iab20_22 => "IAB20-22",
+            ContentCategory::Iab20_23 => "IAB20-23",
+            ContentCategory::Iab20_24 => "IAB20-24",
+            ContentCategory::Iab20_25 => "IAB20-25",
+            ContentCategory::Iab20_26 => "IAB20-26",
+            ContentCategory::Iab20_27 => "IAB20-27",
+            ContentCategory::Iab21 => "IAB21",
+            ContentCategory::Iab21_1x => "IAB21-1",
+            ContentCategory::Iab21_2x => "IAB21-2",
+            ContentCategory::Iab21_3x => "IAB21-3",
+            ContentCategory::Iab22 => "IAB22",
+            ContentCategory::Iab22_1x => "IAB22-1",
+            ContentCategory::Iab22_2x => "IAB22-2",
+            ContentCategory::Iab22_3x => "IAB22-3",
+            ContentCategory::Iab22_4 => "IAB22-4",
+            ContentCategory::Iab23 => "IAB23",
+            ContentCategory::Iab23_1 => "IAB23-1",
+            ContentCategory::Iab23_2 => "IAB23-2",
+            ContentCategory::Iab23_3 => "IAB23-3",
+            ContentCategory::Iab23_4 => "IAB23-4",
+            ContentCategory::Iab23_5 => "IAB23-5",
+            ContentCategory::Iab23_6 => "IAB23-6",
+            ContentCategory::Iab23_7 => "IAB23-7",
+            ContentCategory::Iab23_8 => "IAB23-8",
+            ContentCategory::Iab23_9 => "IAB23-9",
+            ContentCategory::Iab23_10 => "IAB23-10",
+            ContentCategory::Iab24 => "IAB24",
+            ContentCategory::Iab25 => "IAB25",
+            ContentCategory::Iab25_1 => "IAB25-1",
+            ContentCategory::Iab25_2 => "IAB25-2",
+            ContentCategory::Iab25_3 => "IAB25-3",
+            ContentCategory::Iab25_4 => "IAB25-4",
+            ContentCategory::Iab25_5 => "IAB25-5",
+            ContentCategory::Iab25_6 => "IAB25-6",
+            ContentCategory::Iab25_7 => "IAB25-7",
+            ContentCategory::Iab26 => "IAB26",
+            ContentCategory::Iab26_1 => "IAB26-1",
+            ContentCategory::Iab26_2 => "IAB26-2",
+            ContentCategory::Iab26_3 => "IAB26-3",
+            ContentCategory::Iab26_4 => "IAB26-4",
         }
     }
 }
